@@ -4,71 +4,97 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Major Sports Events</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <style>
-    body {
+    :root {
+      --primary: #00c896;
+      --secondary: #121212;
+      --bg: #0a0a0a;
+      --text: #f0f0f0;
+      --card-bg: #1a1a1a;
+    }
+    * {
       margin: 0;
-      font-family: 'Roboto', sans-serif;
-      background-color: #0a0a0a;
-      color: #f0f0f0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
     header {
-      background-color: #111;
+      background-color: var(--secondary);
       padding: 1.5rem 2rem;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      box-shadow: 0 4px 6px rgba(0,0,0,0.6);
+      box-shadow: 0 4px 8px rgba(0,0,0,0.4);
     }
     header h1 {
       font-size: 1.8rem;
-      color: #00ffcc;
+      color: var(--primary);
+      font-weight: 800;
     }
     nav a {
-      color: #ccc;
+      color: var(--text);
       margin-left: 2rem;
       text-decoration: none;
-      font-weight: bold;
+      font-weight: 600;
+      transition: color 0.3s;
+    }
+    nav a:hover {
+      color: var(--primary);
     }
     .hero {
-      padding: 4rem 2rem;
-      text-align: center;
       background: linear-gradient(to right, #1a1a1a, #1f1f1f);
+      padding: 5rem 2rem;
+      text-align: center;
     }
     .hero h2 {
-      font-size: 2.4rem;
-      color: #00ffff;
+      font-size: 3rem;
       margin-bottom: 1rem;
+      color: var(--primary);
     }
     .hero p {
-      font-size: 1.2rem;
-      color: #aaa;
+      font-size: 1.25rem;
+      color: #ccc;
+      max-width: 700px;
+      margin: 0 auto;
     }
     .section {
-      padding: 3rem 2rem;
-      max-width: 1000px;
+      padding: 4rem 2rem;
+      max-width: 1100px;
       margin: 0 auto;
     }
     .card {
-      background-color: #191919;
-      padding: 2rem;
-      margin-bottom: 2rem;
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      background-color: var(--card-bg);
+      padding: 2.5rem;
+      margin-bottom: 2.5rem;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+      transition: transform 0.3s;
+    }
+    .card:hover {
+      transform: translateY(-5px);
     }
     .card h3 {
       margin-top: 0;
-      color: #00ffaa;
+      color: var(--primary);
+      font-size: 1.5rem;
     }
     .card p {
       color: #ccc;
+      font-size: 1.1rem;
     }
     footer {
       background-color: #111;
       text-align: center;
-      padding: 1rem;
-      font-size: 0.9rem;
+      padding: 2rem;
+      font-size: 0.95rem;
       color: #666;
+      border-top: 1px solid #222;
     }
   </style>
 </head>
@@ -84,27 +110,27 @@
 
   <section class="hero">
     <h2>All Your Sports Events in One Place</h2>
-    <p>Subscribe to your favorite teams and add their matches directly to your calendar.</p>
+    <p>Subscribe to your favorite teams and sync all their matches directly to your calendar — effortlessly and automatically.</p>
   </section>
 
   <section class="section" id="calendar">
     <div class="card">
       <h3>Live Global Calendar</h3>
-      <p>Coming soon: browse all major football, tennis, F1, NBA and cricket events updated daily.</p>
+      <p>Explore the most important matches and tournaments across Football, Basketball, Tennis, F1, and more — always updated and organized for you.</p>
     </div>
   </section>
 
   <section class="section" id="teams">
     <div class="card">
-      <h3>Choose Your Teams</h3>
-      <p>Track your favorite teams and never miss a match. Full selection interface coming soon.</p>
+      <h3>Follow Your Teams</h3>
+      <p>Select the teams you love and track their complete schedule — never miss a match again with automatic updates to your personal calendar.</p>
     </div>
   </section>
 
   <section class="section" id="subscribe">
     <div class="card">
       <h3>Subscribe & Sync</h3>
-      <p>Add events directly to Google Calendar, Apple Calendar or Outlook. Automatic .ICS generation coming.</p>
+      <p>Instantly add upcoming matches to Google Calendar, Apple Calendar, or Outlook with just one click. Full calendar export and .ICS support coming soon.</p>
     </div>
   </section>
 
