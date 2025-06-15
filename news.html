@@ -28,7 +28,7 @@
       <div class="container">
         <div class="row mb-4">
           <div class="col-md-6">
-            <input id="searchKeyword" type="text" class="form-control" placeholder="Search teams or sports (e.g. Portugal, Arsenal)">
+            <input id="searchKeyword" type="text" class="form-control" placeholder="Search news (e.g. Portugal, Ronaldo)">
           </div>
           <div class="col-md-6">
             <button onclick="searchNews()" class="btn btn-primary btn-block">Search</button>
@@ -52,13 +52,14 @@
   <script src="js/bootstrap.min.js"></script>
   <script>
     let page = 1;
-    let currentKeyword = '';
+    let currentKeyword = 'Portugal';
+    const proxyURL = "https://SEU-NOME.netlify.app/.netlify/functions/get-news"; // <-- substitui pelo teu domínio Netlify
 
-    async function fetchSportsNews(keyword, pageNum = 1) {
-      const baseURL = 'https://www.thesportsdb.com/api/v1/json/3/searchteams.php?t=';
-      const res = await fetch(baseURL + encodeURIComponent(keyword));
+    async function fetchNews(keyword, pageNum = 1) {
+      const url = `${proxyURL}?q=${encodeURIComponent(keyword)}&page=${pageNum}`;
+      const res = await fetch(url);
       const data = await res.json();
-      return data.teams || [];
+      return data.articles || [];
     }
 
     async function loadNews(reset = true) {
@@ -68,25 +69,25 @@
         page = 1;
       }
 
-      const teams = await fetchSportsNews(currentKeyword, page);
-      if (teams.length === 0) {
+      const articles = await fetchNews(currentKeyword, page);
+      if (articles.length === 0) {
         container.innerHTML = '<p class="text-muted">No results found. Try another search term.</p>';
         return;
       }
 
-      teams.forEach(team => {
+      articles.forEach(article => {
         const div = document.createElement('div');
         div.className = 'col-md-6 col-lg-4 mb-4';
         div.innerHTML = `
           <div class="post-entry">
             <div class="image">
-              <img src="${team.strTeamBadge || 'images/default.jpg'}" alt="${team.strTeam}" class="img-fluid">
+              <img src="${article.urlToImage || 'images/default.jpg'}" alt="${article.title}" class="img-fluid">
             </div>
             <div class="text p-4">
-              <h2 class="h5 text-black">${team.strTeam}</h2>
-              <span class="text-uppercase date d-block mb-3"><small>Formed: ${team.intFormedYear || 'N/A'}</small></span>
-              <p class="mb-2">${team.strDescriptionEN ? team.strDescriptionEN.substring(0, 100) + '...' : 'No description available.'}</p>
-              <a href="https://${team.strWebsite}" target="_blank" class="btn btn-sm btn-primary">Visit Team Website</a>
+              <h2 class="h5 text-black">${article.title}</h2>
+              <span class="text-uppercase date d-block mb-3"><small>${new Date(article.publishedAt).toLocaleDateString()}</small></span>
+              <p class="mb-2">${article.description || 'No description available.'}</p>
+              <a href="${article.url}" target="_blank" class="btn btn-sm btn-primary">Read More</a>
             </div>
           </div>`;
         container.appendChild(div);
@@ -105,7 +106,6 @@
     }
 
     document.addEventListener('DOMContentLoaded', () => {
-      currentKeyword = 'Portugal';
       loadNews();
     });
   </script>
