@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Major Sports Events &mdash; Latest News</title>
+    <title>Major Sports Events — Latest News</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700"> 
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Mukta:300,400,700">
     <link rel="stylesheet" href="fonts/icomoon/style.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/magnific-popup.css">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link rel="stylesheet" href="css/owl.carousel.min.css">
-    <link rel="stylesheet" href="css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="css/aos.css">
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
 
   <div class="site-wrap">
-    <!-- HEADER OMITTED FOR BREVITY -->
-
     <div class="site-blocks-cover overlay" style="background-image: url(images/hero_bg_3.jpg);" data-aos="fade" data-stellar-background-ratio="0.5">
       <div class="container">
         <div class="row align-items-center justify-content-start">
           <div class="col-md-6 text-center text-md-left" data-aos="fade-up" data-aos-delay="400">
-            <h1 class="bg-text-line">News</h1>
-            <p class="mt-4">Stay up to date with real-time headlines from global sports sources.</p>
+            <h1 class="bg-text-line">Sports News</h1>
+            <p class="mt-4">Live sports news from your favorite sports and teams.</p>
           </div>
         </div>
       </div>
@@ -34,15 +27,27 @@
     <div class="site-section">
       <div class="container">
         <div class="row mb-4">
-          <div class="col-md-6">
-            <input id="searchKeyword" type="text" class="form-control" placeholder="Search sports news (e.g. Portugal)">
+          <div class="col-md-4">
+            <input id="searchKeyword" type="text" class="form-control" placeholder="Search keywords (e.g. Portugal)">
           </div>
-          <div class="col-md-2">
-            <button onclick="searchNews()" class="btn btn-primary">Search</button>
+          <div class="col-md-4">
+            <select id="sportFilter" class="form-control">
+              <option value="">All Sports</option>
+              <option value="football">Football</option>
+              <option value="basketball">Basketball</option>
+              <option value="tennis">Tennis</option>
+              <option value="formula 1">Formula 1</option>
+              <option value="cricket">Cricket</option>
+              <option value="golf">Golf</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <button onclick="searchNews()" class="btn btn-primary btn-block">Search</button>
           </div>
         </div>
+
         <div class="row mb-5" id="news-container">
-          <!-- News articles will be loaded here -->
+          <!-- News articles will appear here -->
         </div>
         <div class="row">
           <div class="col-md-12 text-center">
@@ -52,24 +57,24 @@
       </div>
     </div>
 
-    <!-- FOOTER OMITTED FOR BREVITY -->
-
   </div>
 
   <script src="js/jquery-3.3.1.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
   <script>
-    const encodedKey = 'M2U3Y2M3YmRiYjNlNDhkOTk5YjJjNjk5MGEzOWQyNjI='; // base64 encoded key
+    const encodedKey = 'M2U3Y2M3YmRiYjNlNDhkOTk5YjJjNjk5MGEzOWQyNjI=';
     const NEWS_API_KEY = atob(encodedKey);
 
     let page = 1;
     let currentKeyword = '';
+    let currentSport = '';
 
-    async function fetchNews(keyword = '', pageNum = 1) {
-      const url = `https://newsapi.org/v2/top-headlines?category=sports&language=en&pageSize=6&page=${pageNum}&q=${encodeURIComponent(keyword)}&apiKey=${NEWS_API_KEY}`;
+    async function fetchNews(keyword = '', sport = '', pageNum = 1) {
+      const q = encodeURIComponent((keyword + ' ' + sport).trim());
+      const url = `https://newsapi.org/v2/everything?language=en&pageSize=6&page=${pageNum}&q=${q}&sortBy=publishedAt&apiKey=${NEWS_API_KEY}`;
       const res = await fetch(url);
       const data = await res.json();
-      return data.articles;
+      return data.articles || [];
     }
 
     async function loadNews(reset = true) {
@@ -79,8 +84,7 @@
         page = 1;
       }
 
-      const articles = await fetchNews(currentKeyword, page);
-
+      const articles = await fetchNews(currentKeyword, currentSport, page);
       articles.forEach(article => {
         const div = document.createElement('div');
         div.className = 'col-md-6 col-lg-4 mb-4';
@@ -105,8 +109,10 @@
     }
 
     function searchNews() {
-      const input = document.getElementById('searchKeyword');
-      currentKeyword = input.value.trim();
+      const keywordInput = document.getElementById('searchKeyword');
+      const sportSelect = document.getElementById('sportFilter');
+      currentKeyword = keywordInput.value.trim();
+      currentSport = sportSelect.value.trim();
       page = 1;
       loadNews(true);
     }
