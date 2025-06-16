@@ -1,0 +1,1 @@
+exports.handler = async (event) => ({ statusCode: 200, body: 'team,format\n' + event.queryStringParameters.team + ',csv' });
