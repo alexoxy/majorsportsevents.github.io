@@ -1,0 +1,14 @@
+{
+  "name": "majorsportsevents",
+  "version": "1.0.0",
+  "description": "Website para subscrição de calendários desportivos por clube",
+  "main": "index.html",
+  "scripts": {},
+  "dependencies": {
+    "node-fetch": "^2.6.1"
+  },
+  "devDependencies": {},
+  "keywords": [],
+  "author": "Teu Nome",
+  "license": "MIT"
+}

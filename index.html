@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Major Sports Events</title>
+  <style>
+    body { font-family: sans-serif; padding: 2em; max-width: 800px; margin: auto; }
+    select, button { padding: 0.5em; margin: 0.5em 0; }
+    .team-block { margin-top: 2em; border: 1px solid #ccc; padding: 1em; border-radius: 10px; }
+  </style>
+</head>
+<body>
+  <h1>📅 Major Sports Events Calendar</h1>
+  <p id="language-label">Language:</p>
+  <select id="language-selector">
+    <option value="en">English</option>
+    <option value="pt">Português</option>
+    <option value="zh">中文</option>
+  </select>
+
+  <p>Select a team to subscribe to its calendar:</p>
+  <input type="text" id="team-input" placeholder="e.g. FC Porto">
+  <button onclick="loadTeam()">Find Team</button>
+
+  <div id="team-container"></div>
+
+  <script src="calendar-generator.js"></script>
+  <script>
+    const languageMap = {
+      en: 'Subscribe to',
+      pt: 'Subscrever calendário do',
+      zh: '订阅'
+    };
+
+    const languageSelector = document.getElementById('language-selector');
+    const userLang = navigator.language.startsWith('pt') ? 'pt' : navigator.language.startsWith('zh') ? 'zh' : 'en';
+    languageSelector.value = userLang;
+
+    function loadTeam() {
+      const teamName = document.getElementById('team-input').value;
+      if (!teamName) return;
+
+      const container = document.getElementById('team-container');
+      container.innerHTML = '';
+
+      const block = document.createElement('div');
+      block.className = 'team-block';
+      block.innerHTML = `<h2>${teamName}</h2><div id="${teamName}-subscribe"></div>`;
+      container.appendChild(block);
+
+      const lang = languageSelector.value;
+      const translated = languageMap[lang] || languageMap['en'];
+      const btn = document.createElement('a');
+      const slug = teamName.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+      btn.href = `/.netlify/functions/generate-ics?team=${encodeURIComponent(teamName)}`;
+      btn.style.cssText = \`
+        display: inline-block;
+        margin-top: 12px;
+        padding: 10px 16px;
+        background-color: #28a745;
+        color: white;
+        border-radius: 8px;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+        text-decoration: none;
+        font-weight: bold;
+        font-size: 1em;
+      \`;
+      btn.onmouseover = () => btn.style.backgroundColor = '#218838';
+      btn.onmouseout = () => btn.style.backgroundColor = '#28a745';
+      btn.textContent = lang === 'zh' ? \`📅 \${translated} \${teamName} 的日历\` : \`📅 \${translated} \${teamName}\`;
+      btn.target = '_blank';
+
+      document.getElementById(\`\${teamName}-subscribe\`).appendChild(btn);
+    }
+  </script>
+</body>
+</html>
