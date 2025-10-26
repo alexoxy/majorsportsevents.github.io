@@ -1,9 +1,9 @@
 {
-  "generatedAt": "2024-07-01T00:00:00Z",
-  "description": "Static emergency schedule used whenever upstream APIs are unavailable.",
+  "generatedAt": "2024-08-15T00:00:00Z",
+  "description": "Static safety net for the corporate schedule feed when live services are unavailable.",
   "events": [
     {
-      "id": "fallback-soccer-fifa-world-qual-2025-eu",
+      "id": "fallback-football-fifa-world-qual-2025-eu",
       "sportId": "soccer",
       "sportName": "Association Football",
       "sportRanking": 1,
@@ -57,10 +57,10 @@
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
-      "id": "fallback-soccer-uefacl-final-2025",
+      "id": "fallback-football-uefacl-final-2025",
       "sportId": "soccer",
       "sportName": "Association Football",
       "sportRanking": 1,
@@ -114,13 +114,127 @@
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
+    },
+    {
+      "id": "fallback-nfl-regular-2025-kickoff",
+      "sportId": "american-football",
+      "sportName": "American Football",
+      "sportRanking": 2,
+      "competitionId": "nfl-regular-season",
+      "competitionName": "NFL Regular Season",
+      "level": "continental",
+      "region": "north-america",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "USA/Canada",
+      "season": "2025",
+      "stage": "Kickoff Game",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2025-09-05T00:20:00Z",
+      "endDate": "2025-09-05T03:45:00Z",
+      "timezone": "America/New_York",
+      "venue": {
+        "name": "Arrowhead Stadium",
+        "city": "Kansas City",
+        "country": "USA",
+        "capacity": 76416
+      },
+      "teams": {
+        "home": {
+          "id": "kc",
+          "name": "Kansas City Chiefs",
+          "shortName": "KC",
+          "country": "USA"
+        },
+        "away": {
+          "id": "bal",
+          "name": "Baltimore Ravens",
+          "shortName": "BAL",
+          "country": "USA"
+        }
+      },
+      "links": {
+        "website": "https://www.nfl.com/schedules/",
+        "tickets": "https://www.ticketmaster.com/nfl",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Kansas%20City%2C%20USA&checkin=2025-09-04&checkout=2025-09-06&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/mci/250904/",
+        "notes": "Corporate travel reference"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-08-15T00:00:00Z"
+    },
+    {
+      "id": "fallback-nfl-superbowl-2026",
+      "sportId": "american-football",
+      "sportName": "American Football",
+      "sportRanking": 2,
+      "competitionId": "nfl-playoffs",
+      "competitionName": "NFL Playoffs",
+      "level": "continental",
+      "region": "north-america",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "USA",
+      "season": "2025",
+      "stage": "Super Bowl LX",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2026-02-08T23:30:00Z",
+      "endDate": "2026-02-09T03:30:00Z",
+      "timezone": "America/New_York",
+      "venue": {
+        "name": "Levi's Stadium",
+        "city": "Santa Clara",
+        "country": "USA",
+        "capacity": 68500
+      },
+      "teams": {
+        "home": {
+          "id": "afc",
+          "name": "AFC Champion",
+          "shortName": "AFC",
+          "country": "USA"
+        },
+        "away": {
+          "id": "nfc",
+          "name": "NFC Champion",
+          "shortName": "NFC",
+          "country": "USA"
+        }
+      },
+      "links": {
+        "website": "https://www.nfl.com/super-bowl/",
+        "tickets": "https://www.nfl.com/super-bowl/event-info/",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Santa%20Clara%2C%20USA&checkin=2026-02-07&checkout=2026-02-09&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/sfo/260207/",
+        "notes": "Corporate travel reference"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
       "id": "fallback-cricket-icc-world-cup-2027-opener",
       "sportId": "cricket",
       "sportName": "Cricket",
-      "sportRanking": 2,
+      "sportRanking": 4,
       "competitionId": "icc-cricket-world-cup",
       "competitionName": "ICC Cricket World Cup",
       "level": "world",
@@ -158,7 +272,7 @@
       },
       "links": {
         "website": "https://www.icc-cricket.com/cricket-world-cup",
-        "tickets": "https://tickets.icc-cricket.com/",
+        "tickets": "https://www.icc-cricket.com/tickets",
         "stats": null,
         "preview": null,
         "recap": null,
@@ -171,178 +285,64 @@
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
-      "id": "fallback-cricket-ipl-final-2026",
+      "id": "fallback-cricket-icc-womens-trophy-2026-final",
       "sportId": "cricket",
       "sportName": "Cricket",
-      "sportRanking": 2,
-      "competitionId": "ipl",
-      "competitionName": "Indian Premier League",
-      "level": "continental",
-      "region": "asia",
-      "type": "club",
-      "gender": "male",
+      "sportRanking": 4,
+      "competitionId": "icc-womens-world-cup",
+      "competitionName": "ICC Women's Cricket World Cup",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "female",
       "category": "senior",
-      "country": "India",
+      "country": "Global",
       "season": "2026",
       "stage": "Final",
       "status": "scheduled",
       "statusText": "Match scheduled",
-      "startDate": "2026-05-24T14:00:00Z",
-      "endDate": "2026-05-24T18:00:00Z",
-      "timezone": "Asia/Kolkata",
+      "startDate": "2026-03-29T08:00:00Z",
+      "endDate": "2026-03-29T16:00:00Z",
+      "timezone": "Australia/Sydney",
       "venue": {
-        "name": "Narendra Modi Stadium",
-        "city": "Ahmedabad",
-        "country": "India",
-        "capacity": 132000
+        "name": "Sydney Cricket Ground",
+        "city": "Sydney",
+        "country": "Australia",
+        "capacity": 48000
       },
       "teams": {
         "home": {
-          "id": "qualifier1",
-          "name": "Qualifier 1 Winner",
-          "shortName": "Q1",
-          "country": "India"
-        },
-        "away": {
-          "id": "qualifier2",
-          "name": "Qualifier 2 Winner",
-          "shortName": "Q2",
-          "country": "India"
-        }
-      },
-      "links": {
-        "website": "https://www.iplt20.com/",
-        "tickets": "https://www.iplt20.com/tickets",
-        "stats": null,
-        "preview": null,
-        "recap": null,
-        "stream": null
-      },
-      "travel": {
-        "hotel": "https://www.booking.com/searchresults.html?ss=Ahmedabad%2C%20India&checkin=2026-05-23&checkout=2026-05-25&group_adults=2",
-        "flight": "https://www.skyscanner.net/transport/flights-to/amda/260523/",
-        "notes": "Fallback travel suggestion"
-      },
-      "betting": null,
-      "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
-    },
-    {
-      "id": "fallback-field-hockey-pro-league-men-2025",
-      "sportId": "field-hockey",
-      "sportName": "Field Hockey",
-      "sportRanking": 3,
-      "competitionId": "fih-pro-league-men",
-      "competitionName": "FIH Pro League (Men)",
-      "level": "world",
-      "region": "global",
-      "type": "national",
-      "gender": "male",
-      "category": "senior",
-      "country": "Global",
-      "season": "2025",
-      "stage": "Round 7",
-      "status": "scheduled",
-      "statusText": "Match scheduled",
-      "startDate": "2025-03-15T15:30:00Z",
-      "endDate": "2025-03-15T17:00:00Z",
-      "timezone": "Europe/Amsterdam",
-      "venue": {
-        "name": "Wagener Stadium",
-        "city": "Amsterdam",
-        "country": "Netherlands",
-        "capacity": 9000
-      },
-      "teams": {
-        "home": {
-          "id": "ned",
-          "name": "Netherlands",
-          "shortName": "NED",
-          "country": "Netherlands"
-        },
-        "away": {
           "id": "aus",
           "name": "Australia",
           "shortName": "AUS",
           "country": "Australia"
-        }
-      },
-      "links": {
-        "website": "https://www.fih.hockey/events/fih-pro-league",
-        "tickets": "https://fih.tickets",
-        "stats": null,
-        "preview": null,
-        "recap": null,
-        "stream": null
-      },
-      "travel": {
-        "hotel": "https://www.booking.com/searchresults.html?ss=Amsterdam%2C%20Netherlands&checkin=2025-03-14&checkout=2025-03-16&group_adults=2",
-        "flight": "https://www.skyscanner.net/transport/flights-to/ams/250314/",
-        "notes": "Fallback travel suggestion"
-      },
-      "betting": null,
-      "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
-    },
-    {
-      "id": "fallback-field-hockey-ehl-final4-2025",
-      "sportId": "field-hockey",
-      "sportName": "Field Hockey",
-      "sportRanking": 3,
-      "competitionId": "ehl",
-      "competitionName": "Euro Hockey League",
-      "level": "continental",
-      "region": "europe",
-      "type": "club",
-      "gender": "male",
-      "category": "senior",
-      "country": "Europe",
-      "season": "2024-25",
-      "stage": "Final Four",
-      "status": "scheduled",
-      "statusText": "Match scheduled",
-      "startDate": "2025-04-12T13:00:00Z",
-      "endDate": "2025-04-12T15:30:00Z",
-      "timezone": "Europe/Brussels",
-      "venue": {
-        "name": "La Gantoise HC",
-        "city": "Ghent",
-        "country": "Belgium",
-        "capacity": 8000
-      },
-      "teams": {
-        "home": {
-          "id": "club1",
-          "name": "Semi-final Winner 1",
-          "shortName": "Winner SF1",
-          "country": "Europe"
         },
         "away": {
-          "id": "club2",
-          "name": "Semi-final Winner 2",
-          "shortName": "Winner SF2",
-          "country": "Europe"
+          "id": "eng",
+          "name": "England",
+          "shortName": "ENG",
+          "country": "England"
         }
       },
       "links": {
-        "website": "https://ehlhockey.tv/",
-        "tickets": "https://ehlhockey.tv/tickets",
+        "website": "https://www.icc-cricket.com/womens-world-cup",
+        "tickets": "https://www.icc-cricket.com/tickets",
         "stats": null,
         "preview": null,
         "recap": null,
         "stream": null
       },
       "travel": {
-        "hotel": "https://www.booking.com/searchresults.html?ss=Ghent%2C%20Belgium&checkin=2025-04-11&checkout=2025-04-13&group_adults=2",
-        "flight": "https://www.skyscanner.net/transport/flights-to/brus/250411/",
+        "hotel": "https://www.booking.com/searchresults.html?ss=Sydney%2C%20Australia&checkin=2026-03-28&checkout=2026-03-30&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/syd/260328/",
         "notes": "Fallback travel suggestion"
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
       "id": "fallback-basketball-nba-finals-2025-gm1",
@@ -399,178 +399,178 @@
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
-      "id": "fallback-basketball-fiba-womens-2026-final",
+      "id": "fallback-basketball-wnba-finals-2025",
       "sportId": "basketball",
       "sportName": "Basketball",
       "sportRanking": 4,
-      "competitionId": "fiba-womens-world-cup",
-      "competitionName": "FIBA Women\u2019s Basketball World Cup",
-      "level": "world",
-      "region": "global",
-      "type": "national",
-      "gender": "female",
-      "category": "senior",
-      "country": "Global",
-      "season": "2026",
-      "stage": "Final",
-      "status": "scheduled",
-      "statusText": "Game scheduled",
-      "startDate": "2026-09-27T11:00:00Z",
-      "endDate": "2026-09-27T13:30:00Z",
-      "timezone": "Asia/Tokyo",
-      "venue": {
-        "name": "Saitama Super Arena",
-        "city": "Saitama",
-        "country": "Japan",
-        "capacity": 37000
-      },
-      "teams": {
-        "home": {
-          "id": "semi1",
-          "name": "Semi-final Winner 1",
-          "shortName": "Winner SF1",
-          "country": "Global"
-        },
-        "away": {
-          "id": "semi2",
-          "name": "Semi-final Winner 2",
-          "shortName": "Winner SF2",
-          "country": "Global"
-        }
-      },
-      "links": {
-        "website": "https://www.fiba.basketball/womensbasketballworldcup",
-        "tickets": "https://www.fiba.basketball/womensbasketballworldcup/tickets",
-        "stats": null,
-        "preview": null,
-        "recap": null,
-        "stream": null
-      },
-      "travel": {
-        "hotel": "https://www.booking.com/searchresults.html?ss=Saitama%2C%20Japan&checkin=2026-09-26&checkout=2026-09-28&group_adults=2",
-        "flight": "https://www.skyscanner.net/transport/flights-to/tyoa/260926/",
-        "notes": "Fallback travel suggestion"
-      },
-      "betting": null,
-      "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
-    },
-    {
-      "id": "fallback-baseball-mlb-world-series-2025-gm1",
-      "sportId": "baseball",
-      "sportName": "Baseball",
-      "sportRanking": 5,
-      "competitionId": "mlb",
-      "competitionName": "Major League Baseball",
+      "competitionId": "wnba",
+      "competitionName": "WNBA",
       "level": "continental",
       "region": "north-america",
       "type": "club",
-      "gender": "male",
+      "gender": "female",
       "category": "senior",
-      "country": "USA/Canada",
+      "country": "USA",
       "season": "2025",
-      "stage": "World Series Game 1",
+      "stage": "Finals Game 3",
       "status": "scheduled",
       "statusText": "Game scheduled",
-      "startDate": "2025-10-22T00:00:00Z",
-      "endDate": "2025-10-22T03:30:00Z",
+      "startDate": "2025-10-12T23:00:00Z",
+      "endDate": "2025-10-13T01:30:00Z",
       "timezone": "America/New_York",
       "venue": {
-        "name": "TBD Ballpark",
-        "city": "TBD",
+        "name": "Michelob Ultra Arena",
+        "city": "Las Vegas",
         "country": "USA",
-        "capacity": 45000
+        "capacity": 12500
       },
       "teams": {
         "home": {
-          "id": "al",
-          "name": "American League Champion",
-          "shortName": "AL Champion",
+          "id": "lv",
+          "name": "Las Vegas Aces",
+          "shortName": "LV",
           "country": "USA"
         },
         "away": {
-          "id": "nl",
-          "name": "National League Champion",
-          "shortName": "NL Champion",
+          "id": "ny",
+          "name": "New York Liberty",
+          "shortName": "NY",
           "country": "USA"
         }
       },
       "links": {
-        "website": "https://www.mlb.com/postseason",
-        "tickets": "https://www.mlb.com/tickets",
+        "website": "https://www.wnba.com/",
+        "tickets": "https://www.wnba.com/tickets/",
         "stats": null,
         "preview": null,
         "recap": null,
         "stream": null
       },
       "travel": {
-        "hotel": "https://www.booking.com/",
-        "flight": "https://www.skyscanner.net/",
-        "notes": "Venue TBD"
+        "hotel": "https://www.booking.com/searchresults.html?ss=Las%20Vegas%2C%20USA&checkin=2025-10-11&checkout=2025-10-13&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/las/251011/",
+        "notes": "Corporate travel reference"
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
     },
     {
-      "id": "fallback-baseball-wbc-final-2026",
-      "sportId": "baseball",
-      "sportName": "Baseball",
+      "id": "fallback-rugby-world-cup-2027-opener",
+      "sportId": "rugby",
+      "sportName": "Rugby Union",
       "sportRanking": 5,
-      "competitionId": "wbc",
-      "competitionName": "World Baseball Classic",
+      "competitionId": "rugby-world-cup",
+      "competitionName": "Rugby World Cup",
       "level": "world",
       "region": "global",
       "type": "national",
       "gender": "male",
       "category": "senior",
       "country": "Global",
-      "season": "2026",
-      "stage": "Final",
+      "season": "2027",
+      "stage": "Opening Match",
       "status": "scheduled",
-      "statusText": "Game scheduled",
-      "startDate": "2026-03-23T23:00:00Z",
-      "endDate": "2026-03-24T02:30:00Z",
-      "timezone": "America/New_York",
+      "statusText": "Match scheduled",
+      "startDate": "2027-09-03T08:00:00Z",
+      "endDate": "2027-09-03T10:00:00Z",
+      "timezone": "Australia/Sydney",
       "venue": {
-        "name": "LoanDepot Park",
-        "city": "Miami",
-        "country": "USA",
-        "capacity": 36742
+        "name": "Stadium Australia",
+        "city": "Sydney",
+        "country": "Australia",
+        "capacity": 83500
       },
       "teams": {
         "home": {
-          "id": "semi1",
-          "name": "Semi-final Winner 1",
-          "shortName": "Winner SF1",
-          "country": "Global"
+          "id": "aus",
+          "name": "Australia",
+          "shortName": "AUS",
+          "country": "Australia"
         },
         "away": {
-          "id": "semi2",
-          "name": "Semi-final Winner 2",
-          "shortName": "Winner SF2",
-          "country": "Global"
+          "id": "eng",
+          "name": "England",
+          "shortName": "ENG",
+          "country": "England"
         }
       },
       "links": {
-        "website": "https://www.mlb.com/world-baseball-classic",
-        "tickets": "https://www.mlb.com/world-baseball-classic/tickets",
+        "website": "https://www.rugbyworldcup.com/",
+        "tickets": "https://www.rugbyworldcup.com/tickets",
         "stats": null,
         "preview": null,
         "recap": null,
         "stream": null
       },
       "travel": {
-        "hotel": "https://www.booking.com/searchresults.html?ss=Miami%2C%20USA&checkin=2026-03-22&checkout=2026-03-24&group_adults=2",
-        "flight": "https://www.skyscanner.net/transport/flights-to/mia/260322/",
+        "hotel": "https://www.booking.com/searchresults.html?ss=Sydney%2C%20Australia&checkin=2027-09-02&checkout=2027-09-04&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/syd/270902/",
         "notes": "Fallback travel suggestion"
       },
       "betting": null,
       "dataSource": "fallback",
-      "lastUpdated": "2024-07-01T00:00:00Z"
+      "lastUpdated": "2024-08-15T00:00:00Z"
+    },
+    {
+      "id": "fallback-rugby-six-nations-2026-round1",
+      "sportId": "rugby",
+      "sportName": "Rugby Union",
+      "sportRanking": 5,
+      "competitionId": "six-nations",
+      "competitionName": "Six Nations Championship",
+      "level": "continental",
+      "region": "europe",
+      "type": "national",
+      "gender": "male",
+      "category": "senior",
+      "country": "Europe",
+      "season": "2026",
+      "stage": "Round 1",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2026-02-07T14:15:00Z",
+      "endDate": "2026-02-07T16:15:00Z",
+      "timezone": "Europe/Dublin",
+      "venue": {
+        "name": "Aviva Stadium",
+        "city": "Dublin",
+        "country": "Ireland",
+        "capacity": 51700
+      },
+      "teams": {
+        "home": {
+          "id": "irl",
+          "name": "Ireland",
+          "shortName": "IRL",
+          "country": "Ireland"
+        },
+        "away": {
+          "id": "wal",
+          "name": "Wales",
+          "shortName": "WAL",
+          "country": "Wales"
+        }
+      },
+      "links": {
+        "website": "https://www.sixnationsrugby.com/en/mens",
+        "tickets": "https://www.irishrugby.ie/tickets/",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Dublin%2C%20Ireland&checkin=2026-02-06&checkout=2026-02-08&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/dubl/260206/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-08-15T00:00:00Z"
     }
   ]
 }
