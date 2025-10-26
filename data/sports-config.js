@@ -1,6 +1,6 @@
 module.exports = {
-  updatedAt: '2024-07-01T00:00:00Z',
-  description: 'Curated list of the five most-followed team sports based on global audience and fandom.',
+  updatedAt: '2024-08-15T00:00:00Z',
+  description: 'Enterprise intelligence coverage for the leading global team sports leagues and national competitions.',
   sports: [
     {
       id: 'soccer',
@@ -9,7 +9,7 @@ module.exports = {
       ranking: 1,
       estimatedFans: '3.5B+',
       continents: ['global'],
-      keywords: ['FIFA', 'UEFA', 'CONMEBOL', 'club', 'national teams'],
+      keywords: ['FIFA', 'UEFA', 'club football', 'national teams'],
       competitions: [
         {
           id: 'fifa-world-cup',
@@ -25,7 +25,7 @@ module.exports = {
         },
         {
           id: 'fifa-womens-world-cup',
-          name: 'FIFA Women\'s World Cup Qualifiers',
+          name: "FIFA Women's World Cup Qualifiers",
           level: 'world',
           region: 'global',
           type: 'national',
@@ -48,8 +48,8 @@ module.exports = {
           parser: 'espn-scoreboard'
         },
         {
-          id: 'uefa-women-champions-league',
-          name: 'UEFA Women\'s Champions League',
+          id: 'uefa-womens-champions-league',
+          name: "UEFA Women's Champions League",
           level: 'continental',
           region: 'europe',
           type: 'club',
@@ -60,7 +60,7 @@ module.exports = {
           parser: 'espn-scoreboard'
         },
         {
-          id: 'copa-libertadores',
+          id: 'conmebol-libertadores',
           name: 'CONMEBOL Libertadores',
           level: 'continental',
           region: 'south-america',
@@ -70,17 +70,99 @@ module.exports = {
           country: 'South America',
           dataSource: 'https://site.api.espn.com/apis/site/v2/sports/soccer/conmebol.libertadores/scoreboard',
           parser: 'espn-scoreboard'
+        }
+      ]
+    },
+    {
+      id: 'american-football',
+      name: 'American Football',
+      shortName: 'NFL',
+      ranking: 2,
+      estimatedFans: '410M+',
+      continents: ['north-america', 'europe'],
+      keywords: ['NFL', 'Super Bowl', 'International Games'],
+      competitions: [
+        {
+          id: 'nfl-regular-season',
+          name: 'NFL Regular Season',
+          level: 'continental',
+          region: 'north-america',
+          type: 'club',
+          gender: 'male',
+          category: 'senior',
+          country: 'USA/Canada',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard',
+          parser: 'espn-scoreboard'
         },
         {
-          id: 'nwsl-championship',
-          name: 'NWSL Championship',
+          id: 'nfl-playoffs',
+          name: 'NFL Playoffs',
+          level: 'continental',
+          region: 'north-america',
+          type: 'club',
+          gender: 'male',
+          category: 'senior',
+          country: 'USA/Canada',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?groups=80',
+          parser: 'espn-scoreboard'
+        },
+        {
+          id: 'nfl-international-series',
+          name: 'NFL International Series',
+          level: 'continental',
+          region: 'europe',
+          type: 'club',
+          gender: 'male',
+          category: 'senior',
+          country: 'United Kingdom/Germany/Brazil',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/football/nfl/scoreboard?groups=9',
+          parser: 'espn-scoreboard'
+        }
+      ]
+    },
+    {
+      id: 'basketball',
+      name: 'Basketball',
+      shortName: 'Basketball',
+      ranking: 3,
+      estimatedFans: '2.4B+',
+      continents: ['global'],
+      keywords: ['NBA', 'Finals', 'World Cup'],
+      competitions: [
+        {
+          id: 'nba',
+          name: 'NBA Season',
+          level: 'continental',
+          region: 'north-america',
+          type: 'club',
+          gender: 'male',
+          category: 'senior',
+          country: 'USA/Canada',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard',
+          parser: 'espn-scoreboard'
+        },
+        {
+          id: 'wnba',
+          name: 'WNBA Season',
           level: 'continental',
           region: 'north-america',
           type: 'club',
           gender: 'female',
           category: 'senior',
           country: 'USA',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/soccer/usa.nwsl/scoreboard',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard',
+          parser: 'espn-scoreboard'
+        },
+        {
+          id: 'fiba-world-cup',
+          name: 'FIBA Basketball World Cup',
+          level: 'world',
+          region: 'global',
+          type: 'national',
+          gender: 'male',
+          category: 'senior',
+          country: 'Global',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/fiba.men/scoreboard',
           parser: 'espn-scoreboard'
         }
       ]
@@ -89,10 +171,10 @@ module.exports = {
       id: 'cricket',
       name: 'Cricket',
       shortName: 'Cricket',
-      ranking: 2,
+      ranking: 4,
       estimatedFans: '2.5B+',
       continents: ['asia', 'oceania', 'europe', 'africa'],
-      keywords: ['ICC', 'T20', 'Test', 'ODI'],
+      keywords: ['ICC', 'T20', 'ODI', 'Tests'],
       competitions: [
         {
           id: 'icc-cricket-world-cup',
@@ -108,7 +190,7 @@ module.exports = {
         },
         {
           id: 'icc-womens-world-cup',
-          name: 'ICC Women\'s Cricket World Cup',
+          name: "ICC Women's Cricket World Cup",
           level: 'world',
           region: 'global',
           type: 'national',
@@ -132,7 +214,7 @@ module.exports = {
         },
         {
           id: 'wpl',
-          name: 'Women\'s Premier League',
+          name: "Women's Premier League",
           level: 'continental',
           region: 'asia',
           type: 'club',
@@ -145,185 +227,51 @@ module.exports = {
       ]
     },
     {
-      id: 'field-hockey',
-      name: 'Field Hockey',
-      shortName: 'Hockey',
-      ranking: 3,
-      estimatedFans: '2B+',
-      continents: ['asia', 'europe', 'oceania'],
-      keywords: ['FIH', 'Pro League', 'World Cup'],
+      id: 'rugby',
+      name: 'Rugby Union',
+      shortName: 'Rugby',
+      ranking: 5,
+      estimatedFans: '950M+',
+      continents: ['europe', 'oceania', 'africa', 'south-america'],
+      keywords: ['World Cup', 'Six Nations', 'The Rugby Championship'],
       competitions: [
         {
-          id: 'fih-pro-league-men',
-          name: 'FIH Pro League (Men)',
+          id: 'rugby-world-cup',
+          name: 'Rugby World Cup',
           level: 'world',
           region: 'global',
           type: 'national',
           gender: 'male',
           category: 'senior',
           country: 'Global',
-          dataSource: 'https://fih-prod-cdn.azureedge.net/api/v1/calendar?competitionId=60',
-          parser: 'fih-calendar'
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/rugby/worldcup/scoreboard',
+          parser: 'espn-scoreboard'
         },
         {
-          id: 'fih-pro-league-women',
-          name: 'FIH Pro League (Women)',
-          level: 'world',
-          region: 'global',
-          type: 'national',
-          gender: 'female',
-          category: 'senior',
-          country: 'Global',
-          dataSource: 'https://fih-prod-cdn.azureedge.net/api/v1/calendar?competitionId=61',
-          parser: 'fih-calendar'
-        },
-        {
-          id: 'ehl',
-          name: 'Euro Hockey League',
+          id: 'six-nations',
+          name: 'Six Nations Championship',
           level: 'continental',
           region: 'europe',
-          type: 'club',
+          type: 'national',
           gender: 'male',
           category: 'senior',
           country: 'Europe',
-          dataSource: null,
-          parser: null
-        }
-      ]
-    },
-    {
-      id: 'basketball',
-      name: 'Basketball',
-      shortName: 'Basketball',
-      ranking: 4,
-      estimatedFans: '2.3B+',
-      continents: ['global'],
-      keywords: ['FIBA', 'NBA', 'EuroLeague'],
-      competitions: [
-        {
-          id: 'nba',
-          name: 'NBA',
-          level: 'continental',
-          region: 'north-america',
-          type: 'club',
-          gender: 'male',
-          category: 'senior',
-          country: 'USA/Canada',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/nba/scoreboard',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/rugby/sixnations/scoreboard',
           parser: 'espn-scoreboard'
         },
         {
-          id: 'wnba',
-          name: 'WNBA',
+          id: 'the-rugby-championship',
+          name: 'The Rugby Championship',
           level: 'continental',
-          region: 'north-america',
-          type: 'club',
-          gender: 'female',
-          category: 'senior',
-          country: 'USA',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/wnba/scoreboard',
-          parser: 'espn-scoreboard'
-        },
-        {
-          id: 'fiba-world-cup',
-          name: 'FIBA Basketball World Cup',
-          level: 'world',
-          region: 'global',
+          region: 'oceania',
           type: 'national',
           gender: 'male',
           category: 'senior',
-          country: 'Global',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/fiba.world/scoreboard',
-          parser: 'espn-scoreboard'
-        },
-        {
-          id: 'fiba-womens-world-cup',
-          name: 'FIBA Women\'s Basketball World Cup',
-          level: 'world',
-          region: 'global',
-          type: 'national',
-          gender: 'female',
-          category: 'senior',
-          country: 'Global',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/basketball/fiba.world.women/scoreboard',
+          country: 'Southern Hemisphere',
+          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/rugby/trinations/scoreboard',
           parser: 'espn-scoreboard'
         }
       ]
-    },
-    {
-      id: 'baseball',
-      name: 'Baseball',
-      shortName: 'Baseball',
-      ranking: 5,
-      estimatedFans: '500M+',
-      continents: ['north-america', 'asia'],
-      keywords: ['MLB', 'NPB', 'World Baseball Classic'],
-      competitions: [
-        {
-          id: 'mlb',
-          name: 'Major League Baseball',
-          level: 'continental',
-          region: 'north-america',
-          type: 'club',
-          gender: 'male',
-          category: 'senior',
-          country: 'USA/Canada',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/baseball/mlb/scoreboard',
-          parser: 'espn-scoreboard'
-        },
-        {
-          id: 'npb',
-          name: 'Nippon Professional Baseball',
-          level: 'continental',
-          region: 'asia',
-          type: 'club',
-          gender: 'male',
-          category: 'senior',
-          country: 'Japan',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/baseball/npb/scoreboard',
-          parser: 'espn-scoreboard'
-        },
-        {
-          id: 'wbc',
-          name: 'World Baseball Classic',
-          level: 'world',
-          region: 'global',
-          type: 'national',
-          gender: 'male',
-          category: 'senior',
-          country: 'Global',
-          dataSource: 'https://site.api.espn.com/apis/site/v2/sports/baseball/wbc/scoreboard',
-          parser: 'espn-scoreboard'
-        }
-      ]
-    }
-  ],
-  travelPartners: [
-    {
-      id: 'booking',
-      name: 'Booking.com',
-      type: 'hotel',
-      baseUrl: 'https://www.booking.com/searchresults.html'
-    },
-    {
-      id: 'skyscanner',
-      name: 'Skyscanner',
-      type: 'flight',
-      baseUrl: 'https://www.skyscanner.net/transport/flights'
-    }
-  ],
-  bettingPartners: [
-    {
-      id: 'pinnacle',
-      name: 'Pinnacle',
-      baseUrl: 'https://www.pinnacle.com',
-      apiDocs: 'https://www.pinnacle.com/en/api'
-    },
-    {
-      id: 'the-odds-api',
-      name: 'The Odds API',
-      baseUrl: 'https://the-odds-api.com',
-      apiDocs: 'https://the-odds-api.com/liveapi/guides/v4/'
     }
   ]
 };
