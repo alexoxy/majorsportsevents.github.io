@@ -1,1991 +1,245 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-i18n="title">Major Sports Intelligence Exchange</title>
-  <meta name="description" content="Enterprise intelligence exchange for NFL, NBA, global football, cricket, and rugby schedules with multilingual collaboration tools.">
-  <meta name="keywords" content="major sports events, corporate sports intelligence, NFL schedule, NBA schedule, cricket fixtures, football calendar, rugby events">
-  <meta name="robots" content="index,follow">
-  <meta property="og:title" content="Major Sports Intelligence Exchange">
-  <meta property="og:description" content="Always-on corporate exchange for football, NFL, NBA, cricket, and rugby schedules.">
-  <meta property="og:type" content="website">
-  <meta property="og:url" content="https://majorsportsevents.com">
-  <meta property="og:locale" content="en_US">
-  <meta name="twitter:card" content="summary_large_image">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Major Sports Events — One world, all sports</title>
+  <meta name="description" content="Major Sports Events — dynamic calendars of the world’s biggest sports. Subscribe per team or country. Google/Apple/Outlook ready." />
+  <meta name="color-scheme" content="light dark" />
+  <meta name="theme-color" content="#0a0a0a" />
   <style>
-    :root {
-      color-scheme: light dark;
-      --bg: #f6f7fb;
-      --fg: #101223;
-      --muted: #5c6275;
-      --accent: #2655ff;
-      --accent-muted: #e6ecff;
-      --border: #d8dbea;
-      --card-bg: #ffffffcc;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    body {
-      margin: 0;
-      font-family: "Inter", "Segoe UI", -apple-system, BlinkMacSystemFont, sans-serif;
-      background: var(--bg);
-      color: var(--fg);
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    header.site-header {
-      background: #fff;
-      border-bottom: 1px solid var(--border);
-      padding: 1.5rem clamp(1.5rem, 4vw, 3.5rem);
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    header .brand h1 {
-      margin: 0;
-      font-size: clamp(1.8rem, 5vw, 2.4rem);
-      letter-spacing: -0.02em;
-    }
-
-    header .brand p {
-      margin: 0.35rem 0 0;
-      color: var(--muted);
-      max-width: 40ch;
-    }
-
-    header .controls {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      flex-wrap: wrap;
-    }
-
-    label.language-switch {
-      font-size: 0.9rem;
-      color: var(--muted);
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    select,
-    input,
-    button {
-      font: inherit;
-      padding: 0.55rem 0.75rem;
-      border-radius: 0.6rem;
-      border: 1px solid var(--border);
-      background: #fff;
-      color: var(--fg);
-      min-width: 0;
-    }
-
-    button.primary {
-      background: var(--accent);
-      border: 1px solid var(--accent);
-      color: #fff;
-      cursor: pointer;
-    }
-
-    button.primary:disabled,
-    button:disabled {
-      opacity: 0.6;
-      cursor: not-allowed;
-    }
-
-    main {
-      flex: 1;
-      padding: clamp(1.5rem, 4vw, 3rem);
-      display: grid;
-      gap: clamp(1.5rem, 3vw, 2.5rem);
-    }
-
-    .intro {
-      display: grid;
-      gap: 1rem;
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-    }
-
-    .section-header {
-      display: grid;
-      gap: 0.5rem;
-    }
-
-    .sports-focus {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .focus-grid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    }
-
-    .focus-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 0.9rem;
-      padding: 1rem;
-      display: grid;
-      gap: 0.5rem;
-      box-shadow: 0 6px 18px rgba(16, 18, 35, 0.05);
-    }
-
-    .focus-card h3 {
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    .focus-card p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .intro ul {
-      margin: 0;
-      padding-left: 1.25rem;
-      color: var(--muted);
-      display: grid;
-      gap: 0.4rem;
-    }
-
-    .filters-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .live-widgets {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-      display: grid;
-      gap: 1.25rem;
-    }
-
-    .widget-controls {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: flex-end;
-    }
-
-    .widget-controls label {
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-      min-width: 160px;
-    }
-
-    .widget-live {
-      display: grid;
-      gap: 1rem;
-    }
-
-    .widget-container {
-      display: grid;
-      gap: 1rem;
-    }
-
-    api-sports-widget {
-      width: 100%;
-      min-height: 360px;
-      border: 1px solid var(--border);
-      border-radius: 0.75rem;
-      overflow: hidden;
-      background: #fff;
-    }
-
-    .widget-summary,
-    .widget-note {
-      color: var(--muted);
-      font-size: 0.85rem;
-      margin: 0;
-    }
-
-    .filters-grid {
-      display: grid;
-      gap: 0.75rem;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-    }
-
-    .filters-grid label {
-      display: grid;
-      gap: 0.35rem;
-      font-size: 0.85rem;
-      color: var(--muted);
-    }
-
-    .filters-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .export-panel {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
-      align-items: center;
-    }
-
-    .export-panel button {
-      background: var(--accent-muted);
-      border: 1px solid var(--accent);
-      color: var(--accent);
-      cursor: pointer;
-    }
-
-    .export-panel button:hover {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .stats-bar {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    .events-section {
-      display: grid;
-      gap: 1.5rem;
-    }
-
-    .events-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .event-card {
-      background: #fff;
-      border-radius: 1rem;
-      border: 1px solid var(--border);
-      padding: 1.25rem;
-      display: grid;
-      gap: 0.75rem;
-      box-shadow: 0 8px 20px rgba(16, 18, 35, 0.05);
-    }
-
-    .event-card header {
-      display: grid;
-      gap: 0.3rem;
-    }
-
-    .event-card .datetime {
-      font-weight: 600;
-      color: var(--accent);
-      font-size: 1rem;
-    }
-
-    .event-card .timezone {
-      font-size: 0.8rem;
-      color: var(--muted);
-    }
-
-    .event-card .teams {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 0.5rem;
-      font-weight: 600;
-      font-size: 1rem;
-    }
-
-    .event-card .teams span.separator {
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    .badges {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem;
-    }
-
-    .badge {
-      font-size: 0.72rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      background: var(--accent-muted);
-      color: var(--accent);
-      padding: 0.25rem 0.5rem;
-      border-radius: 999px;
-      border: 1px solid transparent;
-    }
-
-    .badge.neutral {
-      background: rgba(0, 0, 0, 0.05);
-      color: var(--muted);
-    }
-
-    .event-meta {
-      display: flex;
-      flex-direction: column;
-      gap: 0.25rem;
-      color: var(--muted);
-      font-size: 0.85rem;
-    }
-
-    .event-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-    }
-
-    .event-links a {
-      font-size: 0.85rem;
-      color: var(--accent);
-      text-decoration: none;
-      border: 1px solid var(--accent);
-      padding: 0.3rem 0.6rem;
-      border-radius: 999px;
-    }
-
-    .event-links a:hover,
-    .event-links a:focus {
-      background: var(--accent);
-      color: #fff;
-    }
-
-    .ai-panel,
-    .partners,
-    .content-section {
-      background: var(--card-bg);
-      border: 1px solid var(--border);
-      border-radius: 1rem;
-      padding: clamp(1.25rem, 4vw, 2rem);
-      display: grid;
-      gap: 0.75rem;
-    }
-
-    .knowledge-grid {
-      display: grid;
-      gap: 1rem;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    }
-
-    .knowledge-card {
-      background: #fff;
-      border: 1px solid var(--border);
-      border-radius: 0.9rem;
-      padding: 1rem;
-      display: grid;
-      gap: 0.5rem;
-      color: var(--muted);
-    }
-
-    .knowledge-card h3 {
-      margin: 0;
-      color: var(--fg);
-      font-size: 1rem;
-    }
-
-    .ai-panel pre {
-      margin: 0;
-      padding: 1rem;
-      background: #0f172a;
-      color: #e2e8f0;
-      border-radius: 0.75rem;
-      overflow-x: auto;
-      font-size: 0.85rem;
-    }
-
-    footer {
-      padding: 2rem clamp(1.5rem, 4vw, 3.5rem);
-      background: #101223;
-      color: #e5e7ef;
-      display: grid;
-      gap: 0.75rem;
-      font-size: 0.9rem;
-    }
-
-    footer a {
-      color: #a5b4fc;
-      text-decoration: none;
-    }
-
-    .loading,
-    .empty-state,
-    .error-state {
-      padding: 1rem;
-      border-radius: 0.75rem;
-      border: 1px dashed var(--border);
-      background: #fff;
-      color: var(--muted);
-      text-align: center;
-    }
-
-    .internal {
-      display: none !important;
-    }
-
-    body.show-internal .internal-grid {
-      display: grid !important;
-    }
-
-    body.show-internal .internal-flex {
-      display: flex !important;
-    }
-
-    body.show-internal .internal-block {
-      display: block !important;
-    }
-
-    @media (max-width: 720px) {
-      .event-card .teams {
-        flex-direction: column;
-        text-align: center;
-      }
-      .event-links {
-        justify-content: center;
-      }
-    }
+    :root{ --bg:#0b0c10; --fg:#f5f7fb; --muted:#c9ced6; --accent:#00d4ff; --card:#121319; --border:#22242d; }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Ubuntu,Inter,Helvetica,Arial,sans-serif;background:linear-gradient(180deg,var(--bg),#0e1117 60%,#0b0c10);color:var(--fg)}
+    .wrap{max-width:1000px;margin:0 auto;padding:32px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:12px;align-items:center}
+    .logo{width:42px;height:42px;border-radius:10px;background:radial-gradient(120% 120% at 0 0,#00d4ff 0%,#4361ee 40%,#111827 70%);box-shadow:0 8px 30px rgba(0,212,255,.25)}
+    h1{font-size:clamp(28px,4vw,40px);margin:0;letter-spacing:.2px}
+    .muted{color:var(--muted)}
+    .lang{appearance:none;background:var(--card);border:1px solid var(--border);color:var(--fg);padding:10px 12px;border-radius:10px}
+    main{margin-top:30px;display:grid;grid-template-columns:1.1fr .9fr;gap:28px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px}
+    .lead{font-size:clamp(18px,2.7vw,22px);line-height:1.45;margin:.5rem 0 1rem}
+    .bullets{margin:0;padding-left:18px}
+    .bullets li{margin:.4rem 0}
+    .cta{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+    .btn{padding:12px 16px;border-radius:12px;border:1px solid var(--border);background:#111827;color:#eaf2ff;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(0,0,0,.25)}
+    .btn.primary{background:linear-gradient(180deg,#00d4ff,#1f51ff);border-color:transparent;color:#041018}
+    .btn:hover{transform:translateY(-1px)}
+    footer{margin-top:40px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted)}
+    .tag{font-weight:600}
+    @media (max-width:900px){main{grid-template-columns:1fr}}
+    .hero{aspect-ratio:16/9;border-radius:16px;border:1px dashed #2a2f3a;display:grid;place-items:center;background:radial-gradient(120% 120% at 0 0,rgba(0,212,255,.06),transparent 55%)}
+    .hero .rings{width:88%;max-width:640px;aspect-ratio:16/9;border-radius:20px;background:conic-gradient(from 120deg at 50% 50%,rgba(0,212,255,.25),rgba(67,97,238,.22),rgba(0,0,0,0) 40%);filter:blur(18px);opacity:.6}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:#0b1220;border:1px solid #1f2a3d;color:#b6c1d4;border-radius:999px;padding:8px 12px;font-size:13px}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Roboto Mono,monospace;background:#0f1526;border:1px solid #2b3550;padding:2px 6px;border-radius:6px}
   </style>
 </head>
 <body>
-  <header class="site-header">
-    <div class="brand">
-      <h1 data-i18n="title">Major Sports Intelligence Exchange</h1>
-      <p data-i18n="tagline">Enterprise knowledge network for sharing critical schedules across football, NFL, NBA, cricket, and rugby.</p>
-    </div>
-    <div class="controls">
-      <label class="language-switch">
-        <span data-i18n="language">Language</span>
-        <select id="language-selector" aria-label="Language selector">
-          <option value="en">English</option>
-          <option value="pt">Português</option>
-          <option value="es">Español</option>
-          <option value="fr">Français</option>
-          <option value="ru">Русский</option>
-          <option value="zh">中文</option>
-        </select>
+  <div class="wrap">
+    <header>
+      <div class="brand" role="banner">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1 id="title">Major Sports Events</h1>
+          <div id="tag" class="muted">One world, all sports, always up to date.</div>
+        </div>
+      </div>
+      <label class="pill" aria-label="Language selector">
+        <span id="langLabel">Language</span>
+        <select id="lang" class="lang"></select>
       </label>
-      <button id="refresh-button" class="primary" type="button" data-i18n="refresh">Refresh feed</button>
-    </div>
-  </header>
+    </header>
 
-  <main>
-    <section class="intro">
-      <h2 data-i18n="missionTitle">Shared intelligence for decisive sports planning.</h2>
-      <p data-i18n="missionText">MajorSportsEvents centralises verified schedules so commercial, media, and travel teams can align around the same timeline. Every update is curated for enterprise distribution with clean presentation for stakeholders worldwide.</p>
-      <ul>
-        <li data-i18n="missionPoint1">Priority coverage spans global football, the NFL, the NBA, elite cricket, and international rugby.</li>
-        <li data-i18n="missionPoint2">Filter by sport, competition, geography, or team and publish multilingual briefs in seconds.</li>
-        <li data-i18n="missionPoint3">Exports support enterprise partners while internal delivery channels stay protected.</li>
-      </ul>
-    </section>
+    <main>
+      <section class="card" aria-labelledby="aboutHeading">
+        <h2 id="aboutHeading">About</h2>
+        <p id="lead" class="lead">Your global gateway to the world’s biggest sports.</p>
+        <ul class="bullets">
+          <li id="b1">Stay connected with live, dynamic calendars of international competitions — football, basketball, tennis, motorsport, and more.</li>
+          <li id="b2">Follow your favourite teams and countries.</li>
+          <li id="b3">Subscribe to calendars that automatically update in your timezone on Google Calendar, Apple, or Outlook.</li>
+        </ul>
+        <div class="cta">
+          <a id="cta1" class="btn primary" href="#subscribe">Subscribe to a calendar</a>
+          <a id="cta2" class="btn" href="#explore">Explore events</a>
+        </div>
+      </section>
+      <section class="card hero" aria-label="Preview">
+        <div class="rings" aria-hidden="true"></div>
+        <div style="position:absolute;text-align:center;max-width:520px;padding:0 20px">
+          <div class="pill" style="margin-bottom:10px">.ics • Google • Apple • Outlook</div>
+          <div class="muted">Dynamic calendars per sport • per country • per club • timezone-aware • auto-updates</div>
+          <div style="margin-top:14px;font-size:13px" class="muted">Tip: press <span class="kbd">S</span> to open language switcher</div>
+        </div>
+      </section>
+    </main>
 
-    <section class="sports-focus" aria-labelledby="focus-title">
-      <div class="section-header">
-        <h2 id="focus-title" data-i18n="focusTitle">Strategic sports portfolio</h2>
-        <p data-i18n="focusIntro">The exchange concentrates on the competitions that move global audiences and corporate planning cycles.</p>
-      </div>
-      <div class="focus-grid">
-        <article class="focus-card">
-          <h3 data-i18n="focusFootball">Global Football</h3>
-          <p data-i18n="focusFootballDesc">Continental club showpieces and World Cup qualifying campaigns for leading national teams.</p>
-        </article>
-        <article class="focus-card">
-          <h3 data-i18n="focusNFL">NFL Operations</h3>
-          <p data-i18n="focusNFLDesc">Regular season, playoffs, and international staging tailored for sponsorship and travel teams.</p>
-        </article>
-        <article class="focus-card">
-          <h3 data-i18n="focusNBA">NBA &amp; Elite Hoops</h3>
-          <p data-i18n="focusNBADesc">Season narratives across the NBA and WNBA plus World Cup cycles for global basketball coverage.</p>
-        </article>
-        <article class="focus-card">
-          <h3 data-i18n="focusCricket">Cricket Hubs</h3>
-          <p data-i18n="focusCricketDesc">ICC world events and franchise leagues with decisive reach across Asia, Oceania, and beyond.</p>
-        </article>
-        <article class="focus-card">
-          <h3 data-i18n="focusRugby">Rugby Union</h3>
-          <p data-i18n="focusRugbyDesc">Rugby World Cup cycles, Six Nations, and southern hemisphere championships for unified insights.</p>
-        </article>
-      </div>
-    </section>
+    <footer>
+      <div class="muted"><span class="tag" id="domainLine">MajorSportsEvents.com — One world, all sports, always up to date.</span></div>
+      <div class="muted">© <span id="year"></span> Major Sports Events</div>
+    </footer>
+  </div>
 
-    <section class="filters-panel" aria-labelledby="filters-title">
-      <div class="panel-header">
-        <h2 id="filters-title" data-i18n="filtersTitle">Filter the calendar</h2>
-      </div>
-      <div class="filters-grid">
-        <label>
-          <span data-i18n="sport">Sport</span>
-          <select id="filter-sport"></select>
-        </label>
-        <label>
-          <span data-i18n="competition">Competition</span>
-          <select id="filter-competition"></select>
-        </label>
-        <label>
-          <span data-i18n="type">Format</span>
-          <select id="filter-type"></select>
-        </label>
-        <label>
-          <span data-i18n="gender">Gender</span>
-          <select id="filter-gender"></select>
-        </label>
-        <label>
-          <span data-i18n="region">Continent</span>
-          <select id="filter-region"></select>
-        </label>
-        <label>
-          <span data-i18n="country">Host country</span>
-          <input id="filter-country" type="text" placeholder="">
-        </label>
-        <label>
-          <span data-i18n="team">Team or selection</span>
-          <input id="filter-team" type="search" placeholder="">
-        </label>
-        <label>
-          <span data-i18n="from">From</span>
-          <input id="filter-from" type="date">
-        </label>
-        <label>
-          <span data-i18n="to">To</span>
-          <input id="filter-to" type="date">
-        </label>
-      </div>
-      <div class="filters-actions">
-        <button type="button" id="clear-filters" data-i18n="clearFilters">Clear filters</button>
-        <span class="stats-bar">
-          <span data-role="stats-updated" data-i18n="lastUpdated">Last updated:</span>
-          <span data-role="stats-count"></span>
-        </span>
-      </div>
-      <div class="export-panel" aria-label="Calendar exports">
-        <strong data-i18n="exportTitle">Export calendar</strong>
-        <button type="button" data-export="ics" data-i18n="exportIcs">ICS</button>
-        <button type="button" data-export="json" data-i18n="exportJson">JSON</button>
-        <button type="button" data-export="csv" data-i18n="exportCsv">CSV</button>
-        <button type="button" data-export="pdf" data-i18n="exportPdf">PDF</button>
-      </div>
-    </section>
-
-    <section class="live-widgets" aria-labelledby="live-widgets-title">
-      <div class="section-header">
-        <h2 id="live-widgets-title" data-i18n="widgetSectionTitle">Live API-Sports coverage</h2>
-        <p data-i18n="widgetSectionIntro">Switch sports and languages to explore the real-time catalogue delivered by API-Sports.</p>
-      </div>
-      <div class="widget-controls">
-        <label>
-          <span data-i18n="widgetSportLabel">Sport feed</span>
-          <select id="widget-sport">
-            <option value="football" data-i18n-option="widgetSportFootball">Football</option>
-            <option value="american-football" data-i18n-option="widgetSportAmericanFootball">American football</option>
-            <option value="basketball" data-i18n-option="widgetSportBasketball">Basketball</option>
-            <option value="baseball" data-i18n-option="widgetSportBaseball">Baseball</option>
-            <option value="cricket" data-i18n-option="widgetSportCricket">Cricket</option>
-            <option value="rugby" data-i18n-option="widgetSportRugby">Rugby</option>
-            <option value="hockey" data-i18n-option="widgetSportHockey">Ice hockey</option>
-            <option value="tennis" data-i18n-option="widgetSportTennis">Tennis</option>
-          </select>
-        </label>
-        <label>
-          <span data-i18n="widgetLangLabel">Language</span>
-          <select id="widget-lang">
-            <option value="en" data-i18n-option="widgetLangEnglish">English</option>
-            <option value="pt" data-i18n-option="widgetLangPortuguese">Portuguese</option>
-            <option value="es" data-i18n-option="widgetLangSpanish">Spanish</option>
-            <option value="fr" data-i18n-option="widgetLangFrench">French</option>
-            <option value="ru" data-i18n-option="widgetLangRussian">Russian</option>
-            <option value="zh" data-i18n-option="widgetLangChinese">Chinese</option>
-            <option value="de" data-i18n-option="widgetLangGerman">German</option>
-            <option value="it" data-i18n-option="widgetLangItalian">Italian</option>
-          </select>
-        </label>
-        <label>
-          <span data-i18n="widgetThemeLabel">Theme</span>
-          <select id="widget-theme">
-            <option value="white" data-i18n-option="widgetThemeLight">Light</option>
-            <option value="dark" data-i18n-option="widgetThemeDark">Dark</option>
-          </select>
-        </label>
-      </div>
-      <div class="widget-live">
-        <p class="widget-summary" data-role="widget-summary"></p>
-        <div class="widget-container" id="api-widget-container"></div>
-        <p class="widget-note" data-i18n="widgetNote">Widgets render directly from API-Sports using the enterprise key provided.</p>
-      </div>
-    </section>
-
-    <section class="ai-panel internal internal-grid" aria-labelledby="ai-panel-title">
-      <h2 id="ai-panel-title" data-i18n="aiTitle">AI-ready event feed</h2>
-      <p data-i18n="aiDescription">Copy or consume the JSON below for downstream automation. The structure mirrors our export API and contains the current filtered dataset.</p>
-      <pre id="ai-json"></pre>
-    </section>
-
-    <section class="events-section" aria-labelledby="upcoming-title">
-      <div class="section-header">
-        <h2 id="upcoming-title" data-i18n="upcomingTitle">Upcoming fixtures</h2>
-        <p class="results-summary" data-role="results-summary"></p>
-      </div>
-      <div id="events-loading" class="loading" hidden data-i18n="loading">Loading schedule…</div>
-      <div id="events-error" class="error-state" hidden></div>
-      <div id="events-empty" class="empty-state" hidden data-i18n="noEvents">No events match the current filters.</div>
-      <div id="events-grid" class="events-grid" aria-live="polite"></div>
-    </section>
-
-    <section class="events-section" aria-labelledby="archive-title">
-      <h2 id="archive-title" data-i18n="archiveTitle">Archive (previous fixtures)</h2>
-      <div id="archive-grid" class="events-grid"></div>
-    </section>
-
-    <section class="content-section knowledge" aria-labelledby="sharing-title">
-      <h2 id="sharing-title" data-i18n="sharingTitle">Collaborative coverage workflows</h2>
-      <p data-i18n="sharingText1">Align sponsorship, editorial, hospitality, and analytics teams with curated event context that is easy to share across regions.</p>
-      <div class="knowledge-grid">
-        <article class="knowledge-card">
-          <h3 data-i18n="sharingCard1Title">Global briefings</h3>
-          <p data-i18n="sharingCard1Text">Summaries and timelines ready for executive updates, market newsletters, and multilingual dashboards.</p>
-        </article>
-        <article class="knowledge-card">
-          <h3 data-i18n="sharingCard2Title">Continental drill-down</h3>
-          <p data-i18n="sharingCard2Text">Region-specific filters highlight continental club and national competitions for rapid decision windows.</p>
-        </article>
-        <article class="knowledge-card">
-          <h3 data-i18n="sharingCard3Title">Team-level intelligence</h3>
-          <p data-i18n="sharingCard3Text">Track club and national team appearances to coordinate marketing activations and travel programs.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="partners internal internal-grid" aria-labelledby="partners-title">
-      <h2 id="partners-title" data-i18n="partnersTitle">Operational integrations (internal)</h2>
-      <p data-i18n="travelNote">Travel logistics, hospitality inventory, and compliant data feeds are available to accredited partners via secure channels.</p>
-      <p data-i18n="bettingNote">Regulated odds and commercial APIs remain protected; request credentials through the enterprise account manager.</p>
-      <ul id="partners-list"></ul>
-    </section>
-
-    <section class="content-section" aria-labelledby="about-title">
-      <h2 id="about-title" data-i18n="aboutTitle">About MajorSportsEvents</h2>
-      <p data-i18n="aboutContent">MajorSportsEvents operates as a corporate exchange for the world’s most influential team sports. We verify every fixture against official sources, deliver structured data for automation, and provide a polished interface for executive communication.</p>
-    </section>
-  </main>
-
-  <footer>
-    <span>&copy; <span id="copyright-year"></span> MajorSportsEvents. <span data-i18n="footerRights">All referenced competitions remain the property of their official organisers.</span></span>
-    <span data-i18n="footerAttribution">Designed as a clean, multilingual knowledge surface for enterprise stakeholders and trusted partners.</span>
-    <span class="internal internal-block" data-i18n="footerApi">Internal endpoints: /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.</span>
-  </footer>
-
-  <script id="structured-data" type="application/ld+json"></script>
   <script>
-    const API_BASE = '/.netlify/functions';
-    const DEFAULT_LANGUAGE = 'en';
-    const API_WIDGET_KEY = 'cee14c3513aba0e5c469e132f7d4c7d2';
-    const WIDGET_SCRIPT_SRC = 'https://widgets.api-sports.io/2.0.3/widgets.js';
-    const WIDGET_SPORT_KEYS = {
-      football: 'widgetSportFootball',
-      'american-football': 'widgetSportAmericanFootball',
-      basketball: 'widgetSportBasketball',
-      baseball: 'widgetSportBaseball',
-      cricket: 'widgetSportCricket',
-      rugby: 'widgetSportRugby',
-      hockey: 'widgetSportHockey',
-      tennis: 'widgetSportTennis'
-    };
-    const WIDGET_LANG_KEYS = {
-      en: 'widgetLangEnglish',
-      pt: 'widgetLangPortuguese',
-      es: 'widgetLangSpanish',
-      fr: 'widgetLangFrench',
-      ru: 'widgetLangRussian',
-      zh: 'widgetLangChinese',
-      de: 'widgetLangGerman',
-      it: 'widgetLangItalian'
-    };
-    const urlParams = new URLSearchParams(window.location.search);
-    if (urlParams.get('internal') === '1') {
-      document.body.classList.add('show-internal');
-    }
     const translations = {
       en: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: 'Enterprise knowledge network for sharing critical schedules across football, NFL, NBA, cricket, and rugby.',
-        language: 'Language',
-        refresh: 'Refresh feed',
-        missionTitle: 'Shared intelligence for decisive sports planning.',
-        missionText: 'MajorSportsEvents centralises verified schedules so commercial, media, and travel teams can align around the same timeline. Every update is curated for enterprise distribution with clean presentation for stakeholders worldwide.',
-        missionPoint1: 'Priority coverage spans global football, the NFL, the NBA, elite cricket, and international rugby.',
-        missionPoint2: 'Filter by sport, competition, geography, or team and publish multilingual briefs in seconds.',
-        missionPoint3: 'Exports support enterprise partners while internal delivery channels stay protected.',
-        focusTitle: 'Strategic sports portfolio',
-        focusIntro: 'The exchange concentrates on the competitions that move global audiences and corporate planning cycles.',
-        focusFootball: 'Global Football',
-        focusFootballDesc: 'Continental club showpieces and World Cup qualifying campaigns for leading national teams.',
-        focusNFL: 'NFL Operations',
-        focusNFLDesc: 'Regular season, playoffs, and international staging tailored for sponsorship and travel teams.',
-        focusNBA: 'NBA & Elite Hoops',
-        focusNBADesc: 'Season narratives across the NBA and WNBA plus World Cup cycles for global basketball coverage.',
-        focusCricket: 'Cricket Hubs',
-        focusCricketDesc: 'ICC world events and franchise leagues with decisive reach across Asia, Oceania, and beyond.',
-        focusRugby: 'Rugby Union',
-        focusRugbyDesc: 'Rugby World Cup cycles, Six Nations, and southern hemisphere championships for unified insights.',
-        filtersTitle: 'Filter the calendar',
-        sport: 'Sport',
-        competition: 'Competition',
-        region: 'Continent',
-        type: 'Format',
-        gender: 'Gender',
-        country: 'Host country',
-        team: 'Team or selection',
-        from: 'From',
-        to: 'To',
-        clearFilters: 'Clear filters',
-        exportTitle: 'Export calendar',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: 'Last updated:',
-        loading: 'Loading schedule…',
-        noEvents: 'No events match the current filters.',
-        error: 'Unable to load events. Try again later.',
-        upcomingTitle: 'Upcoming fixtures',
-        archiveTitle: 'Archive (previous fixtures)',
-        sharingTitle: 'Collaborative coverage workflows',
-        sharingText1: 'Align sponsorship, editorial, hospitality, and analytics teams with curated event context that is easy to share across regions.',
-        sharingCard1Title: 'Global briefings',
-        sharingCard1Text: 'Summaries and timelines ready for executive updates, market newsletters, and multilingual dashboards.',
-        sharingCard2Title: 'Continental drill-down',
-        sharingCard2Text: 'Region-specific filters highlight continental club and national competitions for rapid decision windows.',
-        sharingCard3Title: 'Team-level intelligence',
-        sharingCard3Text: 'Track club and national team appearances to coordinate marketing activations and travel programs.',
-        aiTitle: 'AI-ready event feed',
-        aiDescription: 'Copy or consume the JSON below for downstream automation. The structure mirrors our export API and contains the current filtered dataset.',
-        partnersTitle: 'Operational integrations (internal)',
-        travelNote: 'Travel logistics, hospitality inventory, and compliant data feeds are available to accredited partners via secure channels.',
-        bettingNote: 'Regulated odds and commercial APIs remain protected; request credentials through the enterprise account manager.',
-        aboutTitle: 'About MajorSportsEvents',
-        aboutContent: 'MajorSportsEvents operates as a corporate exchange for the world’s most influential team sports. We verify every fixture against official sources, deliver structured data for automation, and provide a polished interface for executive communication.',
-        footerRights: 'All referenced competitions remain the property of their official organisers.',
-        footerApi: 'Internal endpoints: /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.',
-        footerAttribution: 'Designed as a clean, multilingual knowledge surface for enterprise stakeholders and trusted partners.',
-        male: 'Male',
-        female: 'Female',
-        club: 'Club',
-        national: 'National team',
-        world: 'World',
-        continental: 'Continental',
-        vs: 'vs',
-        updatedAt: 'Updated at',
-        timezone: 'Local timezone',
-        stats: 'Stats',
-        travel: 'Hotels',
-        flights: 'Flights',
-        info: 'Info',
-        odds: 'Odds',
-        widgetSectionTitle: 'Live API-Sports coverage',
-        widgetSectionIntro: 'Switch sports and languages to explore the real-time catalogue delivered by API-Sports.',
-        widgetSportLabel: 'Sport feed',
-        widgetLangLabel: 'Language',
-        widgetThemeLabel: 'Theme',
-        widgetNote: 'Widgets render directly from API-Sports using the enterprise key provided.',
-        widgetSummary: 'Showing {sport} coverage in {language}.',
-        widgetSportFootball: 'Football',
-        widgetSportAmericanFootball: 'American football',
-        widgetSportBasketball: 'Basketball',
-        widgetSportBaseball: 'Baseball',
-        widgetSportCricket: 'Cricket',
-        widgetSportRugby: 'Rugby',
-        widgetSportHockey: 'Ice hockey',
-        widgetSportTennis: 'Tennis',
-        widgetLangEnglish: 'English',
-        widgetLangPortuguese: 'Portuguese',
-        widgetLangSpanish: 'Spanish',
-        widgetLangFrench: 'French',
-        widgetLangRussian: 'Russian',
-        widgetLangChinese: 'Chinese',
-        widgetLangGerman: 'German',
-        widgetLangItalian: 'Italian',
-        widgetThemeLight: 'Light',
-        widgetThemeDark: 'Dark'
-      },
-      pt: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: 'Rede de conhecimento empresarial para partilhar calendários críticos de futebol, NFL, NBA, críquete e râguebi.',
-        language: 'Idioma',
-        refresh: 'Atualizar feed',
-        missionTitle: 'Inteligência partilhada para planeamento desportivo decisivo.',
-        missionText: 'A MajorSportsEvents centraliza calendários verificados para que equipas comerciais, de media e de viagens alinhem o mesmo cronograma. Cada atualização é curada para distribuição empresarial com apresentação limpa para decisores globais.',
-        missionPoint1: 'Cobertura prioritária de futebol global, NFL, NBA, críquete de elite e râguebi internacional.',
-        missionPoint2: 'Filtra por desporto, competição, geografia ou equipa e publica briefings multilingues em segundos.',
-        missionPoint3: 'As exportações servem parceiros empresariais mantendo protegidos os canais internos.',
-        focusTitle: 'Portefólio estratégico de desportos',
-        focusIntro: 'A exchange concentra-se nas competições que movem audiências globais e ciclos de planeamento corporativo.',
-        focusFootball: 'Futebol Global',
-        focusFootballDesc: 'Provas de clubes continentais e qualificações para Mundiais das principais seleções.',
-        focusNFL: 'Operações NFL',
-        focusNFLDesc: 'Época regular, playoffs e jogos internacionais ajustados a equipas de patrocínio e viagens.',
-        focusNBA: 'NBA & Basquetebol de elite',
-        focusNBADesc: 'Narrativas de época na NBA e WNBA e ciclos de Mundiais para cobertura global do basquetebol.',
-        focusCricket: 'Plataformas de Críquete',
-        focusCricketDesc: 'Eventos mundiais ICC e ligas franchise com alcance decisivo na Ásia, Oceânia e além.',
-        focusRugby: 'Râguebi',
-        focusRugbyDesc: 'Ciclos do Mundial de Râguebi, Six Nations e campeonatos do hemisfério sul para insights unificados.',
-        filtersTitle: 'Filtrar o calendário',
-        sport: 'Desporto',
-        competition: 'Competição',
-        region: 'Continente',
-        type: 'Formato',
-        gender: 'Género',
-        country: 'País anfitrião',
-        team: 'Equipa ou seleção',
-        from: 'De',
-        to: 'Até',
-        clearFilters: 'Limpar filtros',
-        exportTitle: 'Exportar calendário',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: 'Última atualização:',
-        loading: 'A carregar agenda…',
-        noEvents: 'Sem eventos para os filtros atuais.',
-        error: 'Não foi possível carregar os eventos. Tenta novamente mais tarde.',
-        upcomingTitle: 'Próximos jogos',
-        archiveTitle: 'Arquivo (jogos anteriores)',
-        sharingTitle: 'Fluxos colaborativos de cobertura',
-        sharingText1: 'Alinha equipas de patrocínio, editorial, hospitalidade e analytics com contexto curado fácil de partilhar entre regiões.',
-        sharingCard1Title: 'Briefings globais',
-        sharingCard1Text: 'Sumários e cronologias prontos para atualizações executivas, newsletters de mercado e dashboards multilingues.',
-        sharingCard2Title: 'Análises continentais',
-        sharingCard2Text: 'Filtros regionais destacam competições continentais de clubes e seleções para decisões rápidas.',
-        sharingCard3Title: 'Inteligência de equipas',
-        sharingCard3Text: 'Acompanha aparições de clubes e seleções para coordenar ativações de marketing e programas de viagem.',
-        aiTitle: 'Feed preparado para IA',
-        aiDescription: 'Copia ou consome o JSON abaixo para automações. A estrutura replica a API de exportação e contém o conjunto filtrado atual.',
-        partnersTitle: 'Integrações operacionais (interno)',
-        travelNote: 'Logística de viagens, hospitalidade e feeds regulados estão disponíveis a parceiros acreditados através de canais seguros.',
-        bettingNote: 'APIs comerciais e de cotações permanecem protegidas; solicita credenciais ao gestor de conta empresarial.',
-        aboutTitle: 'Sobre a MajorSportsEvents',
-        aboutContent: 'A MajorSportsEvents opera como exchange corporativa dos desportos coletivos mais influentes. Verificamos cada jogo em fontes oficiais, entregamos dados estruturados para automação e fornecemos uma interface polida para comunicação executiva.',
-        footerRights: 'Todos os direitos das competições referidas pertencem aos organizadores oficiais.',
-        footerApi: 'Endpoints internos: /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.',
-        footerAttribution: 'Desenhado como superfície de conhecimento limpa e multilingue para stakeholders empresariais e parceiros de confiança.',
-        male: 'Masculino',
-        female: 'Feminino',
-        club: 'Clubes',
-        national: 'Seleções',
-        world: 'Mundial',
-        continental: 'Continental',
-        vs: 'vs',
-        updatedAt: 'Atualizado em',
-        timezone: 'Fuso horário local',
-        stats: 'Estatísticas',
-        travel: 'Hotéis',
-        flights: 'Voos',
-        info: 'Informação',
-        odds: 'Cotações',
-        widgetSectionTitle: 'Cobertura API-Sports em direto',
-        widgetSectionIntro: 'Alterna desportos e idiomas para explorar o catálogo em tempo real fornecido pela API-Sports.',
-        widgetSportLabel: 'Feed de desporto',
-        widgetLangLabel: 'Idioma',
-        widgetThemeLabel: 'Tema',
-        widgetNote: 'Os widgets são servidos diretamente pela API-Sports com a chave empresarial fornecida.',
-        widgetSummary: 'A mostrar cobertura de {sport} em {language}.',
-        widgetSportFootball: 'Futebol',
-        widgetSportAmericanFootball: 'Futebol americano',
-        widgetSportBasketball: 'Basquetebol',
-        widgetSportBaseball: 'Basebol',
-        widgetSportCricket: 'Críquete',
-        widgetSportRugby: 'Râguebi',
-        widgetSportHockey: 'Hóquei no gelo',
-        widgetSportTennis: 'Ténis',
-        widgetLangEnglish: 'Inglês',
-        widgetLangPortuguese: 'Português',
-        widgetLangSpanish: 'Espanhol',
-        widgetLangFrench: 'Francês',
-        widgetLangRussian: 'Russo',
-        widgetLangChinese: 'Chinês',
-        widgetLangGerman: 'Alemão',
-        widgetLangItalian: 'Italiano',
-        widgetThemeLight: 'Claro',
-        widgetThemeDark: 'Escuro'
-      },
-      es: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: 'Red de conocimiento empresarial para compartir calendarios críticos de fútbol, NFL, NBA, críquet y rugby.',
-        language: 'Idioma',
-        refresh: 'Actualizar feed',
-        missionTitle: 'Inteligencia compartida para una planificación deportiva decisiva.',
-        missionText: 'MajorSportsEvents centraliza calendarios verificados para que los equipos comerciales, de medios y de viajes trabajen con la misma agenda. Cada actualización se cura para su distribución empresarial con una presentación limpia para los responsables globales.',
-        missionPoint1: 'Cobertura prioritaria de fútbol global, NFL, NBA, críquet de élite y rugby internacional.',
-        missionPoint2: 'Filtra por deporte, competición, geografía o equipo y publica informes multilingües en segundos.',
-        missionPoint3: 'Las exportaciones atienden a los socios empresariales mientras los canales internos permanecen protegidos.',
-        focusTitle: 'Portfolio estratégico de deportes',
-        focusIntro: 'La exchange se centra en las competiciones que mueven audiencias globales y ciclos corporativos de planificación.',
-        focusFootball: 'Fútbol global',
-        focusFootballDesc: 'Grandes citas de clubes continentales y fases clasificatorias mundialistas de las selecciones líderes.',
-        focusNFL: 'Operaciones NFL',
-        focusNFLDesc: 'Temporada regular, playoffs y partidos internacionales adaptados a equipos de patrocinio y viajes.',
-        focusNBA: 'NBA y baloncesto élite',
-        focusNBADesc: 'Narrativas de temporada en la NBA y WNBA más ciclos de Mundial para una cobertura global del baloncesto.',
-        focusCricket: 'Plataformas de críquet',
-        focusCricketDesc: 'Eventos mundiales de la ICC y ligas franquicia con alcance decisivo en Asia, Oceanía y más allá.',
-        focusRugby: 'Rugby',
-        focusRugbyDesc: 'Ciclos de la Copa del Mundo de Rugby, Six Nations y campeonatos del hemisferio sur para insights unificados.',
-        filtersTitle: 'Filtrar el calendario',
-        sport: 'Deporte',
-        competition: 'Competición',
-        region: 'Continente',
-        type: 'Formato',
-        gender: 'Género',
-        country: 'País anfitrión',
-        team: 'Equipo o selección',
-        from: 'Desde',
-        to: 'Hasta',
-        clearFilters: 'Limpiar filtros',
-        exportTitle: 'Exportar calendario',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: 'Última actualización:',
-        loading: 'Cargando agenda…',
-        noEvents: 'No hay eventos para los filtros actuales.',
-        error: 'No se pudieron cargar los eventos. Inténtalo de nuevo más tarde.',
-        upcomingTitle: 'Próximos partidos',
-        archiveTitle: 'Archivo (partidos anteriores)',
-        sharingTitle: 'Flujos colaborativos de cobertura',
-        sharingText1: 'Alinea equipos de patrocinio, editorial, hospitalidad y analítica con contexto curado fácil de compartir entre regiones.',
-        sharingCard1Title: 'Briefings globales',
-        sharingCard1Text: 'Resúmenes y cronologías listos para reportes ejecutivos, newsletters de mercado y paneles multilingües.',
-        sharingCard2Title: 'Profundización continental',
-        sharingCard2Text: 'Filtros regionales destacan competiciones continentales de clubes y selecciones para decisiones rápidas.',
-        sharingCard3Title: 'Inteligencia por equipo',
-        sharingCard3Text: 'Sigue apariciones de clubes y selecciones para coordinar activaciones de marketing y programas de viaje.',
-        aiTitle: 'Feed listo para IA',
-        aiDescription: 'Copia o consume el JSON inferior para automatizaciones. La estructura refleja la API de exportación y contiene el conjunto filtrado actual.',
-        partnersTitle: 'Integraciones operativas (interno)',
-        travelNote: 'La logística de viajes, la hospitalidad y los feeds regulados están disponibles para socios acreditados mediante canales seguros.',
-        bettingNote: 'Las APIs comerciales y de cuotas permanecen protegidas; solicita credenciales al gestor de cuenta corporativo.',
-        aboutTitle: 'Sobre MajorSportsEvents',
-        aboutContent: 'MajorSportsEvents opera como una exchange corporativa para los deportes de equipo más influyentes del mundo. Verificamos cada encuentro en fuentes oficiales, entregamos datos estructurados para automatización y ofrecemos una interfaz pulida para la comunicación ejecutiva.',
-        footerRights: 'Todos los derechos de las competiciones mencionadas pertenecen a sus organizadores oficiales.',
-        footerApi: 'Endpoints internos: /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.',
-        footerAttribution: 'Diseñado como una superficie de conocimiento limpia y multilingüe para stakeholders empresariales y socios de confianza.',
-        male: 'Masculino',
-        female: 'Femenino',
-        club: 'Clubes',
-        national: 'Selecciones',
-        world: 'Mundial',
-        continental: 'Continental',
-        vs: 'vs',
-        updatedAt: 'Actualizado el',
-        timezone: 'Zona horaria local',
-        stats: 'Estadísticas',
-        travel: 'Hoteles',
-        flights: 'Vuelos',
-        info: 'Información',
-        odds: 'Cuotas',
-        widgetSectionTitle: 'Cobertura en vivo de API-Sports',
-        widgetSectionIntro: 'Alterna deportes e idiomas para explorar el catálogo en tiempo real que ofrece API-Sports.',
-        widgetSportLabel: 'Feed deportivo',
-        widgetLangLabel: 'Idioma',
-        widgetThemeLabel: 'Tema',
-        widgetNote: 'Los widgets se renderizan directamente desde API-Sports con la clave empresarial proporcionada.',
-        widgetSummary: 'Mostrando cobertura de {sport} en {language}.',
-        widgetSportFootball: 'Fútbol',
-        widgetSportAmericanFootball: 'Fútbol americano',
-        widgetSportBasketball: 'Baloncesto',
-        widgetSportBaseball: 'Béisbol',
-        widgetSportCricket: 'Críquet',
-        widgetSportRugby: 'Rugby',
-        widgetSportHockey: 'Hockey sobre hielo',
-        widgetSportTennis: 'Tenis',
-        widgetLangEnglish: 'Inglés',
-        widgetLangPortuguese: 'Portugués',
-        widgetLangSpanish: 'Español',
-        widgetLangFrench: 'Francés',
-        widgetLangRussian: 'Ruso',
-        widgetLangChinese: 'Chino',
-        widgetLangGerman: 'Alemán',
-        widgetLangItalian: 'Italiano',
-        widgetThemeLight: 'Claro',
-        widgetThemeDark: 'Oscuro'
-      },
-      fr: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: 'Réseau de connaissance d’entreprise pour partager les calendriers clés du football, de la NFL, de la NBA, du cricket et du rugby.',
-        language: 'Langue',
-        refresh: 'Actualiser le flux',
-        missionTitle: 'Intelligence partagée pour un pilotage sportif décisif.',
-        missionText: 'MajorSportsEvents centralise des calendriers vérifiés afin que les équipes commerciales, médias et voyages travaillent sur la même feuille de route. Chaque mise à jour est préparée pour une diffusion corporate avec une présentation claire pour les décideurs mondiaux.',
-        missionPoint1: 'Couverture prioritaire du football mondial, de la NFL, de la NBA, du cricket d’élite et du rugby international.',
-        missionPoint2: 'Filtrez par sport, compétition, zone géographique ou équipe et publiez des briefings multilingues en quelques secondes.',
-        missionPoint3: 'Les exports servent les partenaires d’entreprise tout en gardant protégés les canaux internes.',
-        focusTitle: 'Portefeuille sportif stratégique',
-        focusIntro: 'La plateforme se concentre sur les compétitions qui rythment les audiences mondiales et les cycles de planification corporate.',
-        focusFootball: 'Football mondial',
-        focusFootballDesc: 'Grandes compétitions continentales de clubs et campagnes de qualification mondiale des sélections majeures.',
-        focusNFL: 'Opérations NFL',
-        focusNFLDesc: 'Saison régulière, playoffs et matches internationaux adaptés aux équipes sponsoring et voyage.',
-        focusNBA: 'NBA & basket élite',
-        focusNBADesc: 'Narrations de saison NBA et WNBA ainsi que cycles Coupe du monde pour une couverture globale du basket.',
-        focusCricket: 'Pôles cricket',
-        focusCricketDesc: 'Événements mondiaux de l’ICC et ligues franchise avec un impact majeur en Asie, Océanie et au-delà.',
-        focusRugby: 'Rugby',
-        focusRugbyDesc: 'Cycles Coupe du monde, Tournoi des Six Nations et championnats de l’hémisphère sud pour une vision unifiée.',
-        filtersTitle: 'Filtrer le calendrier',
-        sport: 'Sport',
-        competition: 'Compétition',
-        region: 'Continent',
-        type: 'Format',
-        gender: 'Genre',
-        country: 'Pays hôte',
-        team: 'Équipe ou sélection',
-        from: 'De',
-        to: 'À',
-        clearFilters: 'Réinitialiser',
-        exportTitle: 'Exporter le calendrier',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: 'Dernière mise à jour :',
-        loading: 'Chargement du calendrier…',
-        noEvents: 'Aucun événement ne correspond aux filtres.',
-        error: 'Impossible de charger les événements. Réessayez plus tard.',
-        upcomingTitle: 'Rencontres à venir',
-        archiveTitle: 'Archive (rencontres passées)',
-        sharingTitle: 'Flux collaboratifs de couverture',
-        sharingText1: 'Alignez sponsoring, éditorial, hospitalité et analytique grâce à un contexte sélectionné et facile à partager entre régions.',
-        sharingCard1Title: 'Briefings globaux',
-        sharingCard1Text: 'Synthèses et timelines prêtes pour les comités exécutifs, newsletters marché et tableaux multilingues.',
-        sharingCard2Title: 'Analyse continentale',
-        sharingCard2Text: 'Des filtres régionaux mettent en évidence compétitions continentales de clubs et de sélections pour décider vite.',
-        sharingCard3Title: 'Intelligence par équipe',
-        sharingCard3Text: 'Suivez les apparitions des clubs et sélections pour coordonner activations marketing et programmes de voyage.',
-        aiTitle: 'Flux prêt pour l’IA',
-        aiDescription: 'Copiez ou consommez le JSON ci-dessous pour vos automatisations. La structure reflète notre API d’export et contient l’ensemble filtré actuel.',
-        partnersTitle: 'Intégrations opérationnelles (interne)',
-        travelNote: 'Logistique voyages, hospitalité et flux réglementés disponibles pour les partenaires accrédités via des canaux sécurisés.',
-        bettingNote: 'Les APIs commerciales et de cotes restent protégées ; demandez vos accès auprès du gestionnaire de compte entreprise.',
-        aboutTitle: 'À propos de MajorSportsEvents',
-        aboutContent: 'MajorSportsEvents fonctionne comme une exchange corporate pour les sports collectifs les plus influents. Nous vérifions chaque rencontre auprès des sources officielles, livrons des données structurées pour l’automatisation et proposons une interface soignée pour la communication exécutive.',
-        footerRights: 'Les compétitions mentionnées demeurent la propriété de leurs organisateurs officiels.',
-        footerApi: 'Endpoints internes : /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.',
-        footerAttribution: 'Conçu comme une surface de connaissance épurée et multilingue pour les décideurs d’entreprise et partenaires de confiance.',
-        male: 'Masculin',
-        female: 'Féminin',
-        club: 'Clubs',
-        national: 'Sélections',
-        world: 'Mondial',
-        continental: 'Continental',
-        vs: 'vs',
-        updatedAt: 'Mis à jour le',
-        timezone: 'Fuseau horaire local',
-        stats: 'Statistiques',
-        travel: 'Hôtels',
-        flights: 'Vols',
-        info: 'Infos',
-        odds: 'Cotes',
-        widgetSectionTitle: 'Couverture API-Sports en direct',
-        widgetSectionIntro: 'Changez de sport et de langue pour explorer le catalogue temps réel proposé par API-Sports.',
-        widgetSportLabel: 'Flux sportif',
-        widgetLangLabel: 'Langue',
-        widgetThemeLabel: 'Thème',
-        widgetNote: 'Les widgets sont fournis directement par API-Sports avec la clé entreprise fournie.',
-        widgetSummary: 'Affichage de la couverture {sport} en {language}.',
-        widgetSportFootball: 'Football',
-        widgetSportAmericanFootball: 'Football américain',
-        widgetSportBasketball: 'Basket-ball',
-        widgetSportBaseball: 'Baseball',
-        widgetSportCricket: 'Cricket',
-        widgetSportRugby: 'Rugby',
-        widgetSportHockey: 'Hockey sur glace',
-        widgetSportTennis: 'Tennis',
-        widgetLangEnglish: 'Anglais',
-        widgetLangPortuguese: 'Portugais',
-        widgetLangSpanish: 'Espagnol',
-        widgetLangFrench: 'Français',
-        widgetLangRussian: 'Russe',
-        widgetLangChinese: 'Chinois',
-        widgetLangGerman: 'Allemand',
-        widgetLangItalian: 'Italien',
-        widgetThemeLight: 'Clair',
-        widgetThemeDark: 'Sombre'
-      },
-      ru: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: 'Корпоративная сеть знаний для обмена ключевыми календарями футбола, NFL, NBA, крикета и регби.',
-        language: 'Язык',
-        refresh: 'Обновить ленту',
-        missionTitle: 'Общая аналитика для точного спортивного планирования.',
-        missionText: 'MajorSportsEvents централизует проверенные расписания, чтобы коммерческие, медийные и туристические команды работали по единому графику. Каждое обновление подготовлено для корпоративного распространения и удобно для глобальных руководителей.',
-        missionPoint1: 'Приоритет — мировой футбол, NFL, NBA, элитный крикет и международное регби.',
-        missionPoint2: 'Фильтруйте по виду спорта, турниру, региону или команде и публикуйте многоязычные сводки за секунды.',
-        missionPoint3: 'Экспорты доступны партнёрам, а внутренние каналы доставки остаются защищёнными.',
-        focusTitle: 'Стратегическое портфолио видов спорта',
-        focusIntro: 'Платформа концентрируется на турнирах, определяющих мировую аудиторию и корпоративные циклы планирования.',
-        focusFootball: 'Мировой футбол',
-        focusFootballDesc: 'Континентальные клубные финалы и отборочные кампании к чемпионату мира для ведущих сборных.',
-        focusNFL: 'Операции NFL',
-        focusNFLDesc: 'Регулярный сезон, плей-офф и международные матчи для команд по спонсорству и путешествиям.',
-        focusNBA: 'NBA и элитный баскетбол',
-        focusNBADesc: 'Сюжеты сезона в NBA и WNBA, а также циклы Кубка мира для глобального освещения баскетбола.',
-        focusCricket: 'Центры крикета',
-        focusCricketDesc: 'Мировые турниры ICC и франшизные лиги с ключевой аудиторией в Азии, Океании и других регионах.',
-        focusRugby: 'Регби',
-        focusRugbyDesc: 'Чемпионат мира по регби, Турнир шести наций и первенства южного полушария для комплексной картины.',
-        filtersTitle: 'Фильтр календаря',
-        sport: 'Вид спорта',
-        competition: 'Турнир',
-        region: 'Континент',
-        type: 'Формат',
-        gender: 'Пол',
-        country: 'Страна проведения',
-        team: 'Команда или сборная',
-        from: 'С',
-        to: 'По',
-        clearFilters: 'Сбросить фильтры',
-        exportTitle: 'Экспорт календаря',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: 'Последнее обновление:',
-        loading: 'Загрузка расписания…',
-        noEvents: 'Нет событий по выбранным фильтрам.',
-        error: 'Не удалось загрузить события. Попробуйте позже.',
-        upcomingTitle: 'Ближайшие встречи',
-        archiveTitle: 'Архив (прошедшие матчи)',
-        sharingTitle: 'Коллаборативные процессы освещения',
-        sharingText1: 'Синхронизируйте команды по спонсорству, контенту, гостеприимству и аналитике с помощью курируемого контекста, который легко передавать между регионами.',
-        sharingCard1Title: 'Глобальные брифинги',
-        sharingCard1Text: 'Сводки и таймлайны, готовые для руководителей, рыночных рассылок и многоязычных дашбордов.',
-        sharingCard2Title: 'Континентальный фокус',
-        sharingCard2Text: 'Региональные фильтры выделяют континентальные клубные и сборные турниры для быстрых решений.',
-        sharingCard3Title: 'Информация по командам',
-        sharingCard3Text: 'Отслеживайте выступления клубов и сборных для координации маркетинговых активностей и командировок.',
-        aiTitle: 'Лента для ИИ',
-        aiDescription: 'Скопируйте или используйте JSON ниже для автоматизации. Структура повторяет наш экспортный API и содержит текущую выборку.',
-        partnersTitle: 'Операционные интеграции (внутреннее)',
-        travelNote: 'Логистика поездок, размещение и регулируемые потоки данных доступны аккредитованным партнёрам по защищённым каналам.',
-        bettingNote: 'Коммерческие и коэффициентные API защищены; запросите доступ у вашего корпоративного менеджера.',
-        aboutTitle: 'О MajorSportsEvents',
-        aboutContent: 'MajorSportsEvents — корпоративная платформа для самых влиятельных командных видов спорта. Мы подтверждаем каждое событие по официальным источникам, предоставляем структурированные данные для автоматизации и удобный интерфейс для руководителей.',
-        footerRights: 'Все указанные турниры принадлежат их официальным организаторам.',
-        footerApi: 'Внутренние эндпоинты: /.netlify/functions/fetch-events, /.netlify/functions/export-json, /.netlify/functions/export-csv, /.netlify/functions/generate-ics, /.netlify/functions/export-pdf.',
-        footerAttribution: 'Создано как чистая многоязычная среда знаний для корпоративных стейкхолдеров и надёжных партнёров.',
-        male: 'Мужчины',
-        female: 'Женщины',
-        club: 'Клубы',
-        national: 'Сборные',
-        world: 'Мировой',
-        continental: 'Континентальный',
-        vs: 'против',
-        updatedAt: 'Обновлено',
-        timezone: 'Местный часовой пояс',
-        stats: 'Статистика',
-        travel: 'Отели',
-        flights: 'Перелёты',
-        info: 'Информация',
-        odds: 'Коэффициенты',
-        widgetSectionTitle: 'Живое покрытие API-Sports',
-        widgetSectionIntro: 'Переключайте виды спорта и языки, чтобы изучать каталог API-Sports в реальном времени.',
-        widgetSportLabel: 'Вид спорта',
-        widgetLangLabel: 'Язык',
-        widgetThemeLabel: 'Тема',
-        widgetNote: 'Виджеты загружаются напрямую с API-Sports с использованием предоставленного корпоративного ключа.',
-        widgetSummary: 'Отображается {sport} на языке {language}.',
-        widgetSportFootball: 'Футбол',
-        widgetSportAmericanFootball: 'Американский футбол',
-        widgetSportBasketball: 'Баскетбол',
-        widgetSportBaseball: 'Бейсбол',
-        widgetSportCricket: 'Крикет',
-        widgetSportRugby: 'Регби',
-        widgetSportHockey: 'Хоккей',
-        widgetSportTennis: 'Теннис',
-        widgetLangEnglish: 'Английский',
-        widgetLangPortuguese: 'Португальский',
-        widgetLangSpanish: 'Испанский',
-        widgetLangFrench: 'Французский',
-        widgetLangRussian: 'Русский',
-        widgetLangChinese: 'Китайский',
-        widgetLangGerman: 'Немецкий',
-        widgetLangItalian: 'Итальянский',
-        widgetThemeLight: 'Светлая',
-        widgetThemeDark: 'Тёмная'
+        name:"English", title:"Major Sports Events",
+        tag:"One world, all sports, always up to date.",
+        about:"About",
+        lead:"Your global gateway to the world’s biggest sports.",
+        b1:"Stay connected with live, dynamic calendars of international competitions — football, basketball, tennis, motorsport, and more.",
+        b2:"Follow your favourite teams and countries.",
+        b3:"Subscribe to calendars that automatically update in your timezone on Google Calendar, Apple, or Outlook.",
+        cta1:"Subscribe to a calendar", cta2:"Explore events", langLabel:"Language",
+        domain:"MajorSportsEvents.com — One world, all sports, always up to date."
       },
       zh: {
-        title: 'Major Sports Intelligence Exchange',
-        tagline: '企业级知识网络，用于共享足球、NFL、NBA、板球和橄榄球的关键赛程。',
-        language: '语言',
-        refresh: '刷新数据',
-        missionTitle: '共享情报，助力果断的体育规划。',
-        missionText: 'MajorSportsEvents 汇聚经过核实的赛程，帮助商务、媒体和差旅团队围绕同一时间轴协同工作。每一次更新都为企业分发而策划，并以清晰界面呈现给全球决策者。',
-        missionPoint1: '重点覆盖全球足球、NFL、NBA、顶级板球和国际橄榄球。',
-        missionPoint2: '按运动项目、赛事、地域或球队筛选，并在数秒内发布多语言简报。',
-        missionPoint3: '导出内容服务合作伙伴，同时保持内部交付渠道的安全。',
-        focusTitle: '战略性体育组合',
-        focusIntro: '平台聚焦能够驱动全球受众与企业规划周期的关键赛事。',
-        focusFootball: '全球足球',
-        focusFootballDesc: '洲际俱乐部巅峰赛事以及领先国家队的世界杯预选赛。',
-        focusNFL: 'NFL 运营',
-        focusNFLDesc: '常规赛、季后赛与海外赛事，面向赞助与差旅团队量身打造。',
-        focusNBA: 'NBA 与精英篮球',
-        focusNBADesc: '覆盖 NBA、WNBA 的赛季故事以及篮球世界杯周期，实现全球视角。',
-        focusCricket: '板球枢纽',
-        focusCricketDesc: 'ICC 世界级赛事与特许联赛，在亚洲、大洋洲等地区具有决定性影响力。',
-        focusRugby: '橄榄球',
-        focusRugbyDesc: '橄榄球世界杯、六国赛和南半球锦标赛，为洞察提供完整视角。',
-        filtersTitle: '筛选日程',
-        sport: '项目',
-        competition: '赛事',
-        region: '洲别',
-        type: '形式',
-        gender: '性别',
-        country: '主办国家',
-        team: '球队或国家队',
-        from: '开始日期',
-        to: '结束日期',
-        clearFilters: '清除筛选',
-        exportTitle: '导出日程',
-        exportIcs: 'ICS',
-        exportJson: 'JSON',
-        exportCsv: 'CSV',
-        exportPdf: 'PDF',
-        lastUpdated: '最近更新：',
-        loading: '正在加载日程…',
-        noEvents: '没有符合当前筛选条件的赛事。',
-        error: '无法加载赛事，请稍后重试。',
-        upcomingTitle: '即将进行的比赛',
-        archiveTitle: '往期比赛档案',
-        sharingTitle: '协同覆盖流程',
-        sharingText1: '为赞助、内容、接待与分析团队提供易于跨区域共享的精选背景信息。',
-        sharingCard1Title: '全球简报',
-        sharingCard1Text: '摘要与时间线可直接用于高管汇报、市场通讯与多语言看板。',
-        sharingCard2Title: '洲际深度',
-        sharingCard2Text: '区域筛选突出洲际俱乐部及国家队赛事，支持快速决策。',
-        sharingCard3Title: '球队洞察',
-        sharingCard3Text: '跟踪俱乐部和国家队出场，协同市场活动与差旅计划。',
-        aiTitle: '面向 AI 的数据流',
-        aiDescription: '复制或调用下方 JSON 以供自动化使用。结构与导出 API 一致，包含当前筛选的数据集。',
-        partnersTitle: '运营集成（内部）',
-        travelNote: '旅行、接待与合规数据流通过安全通道提供给获授权的合作伙伴。',
-        bettingNote: '商业与赔率 API 受保护；如需访问，请联系企业客户经理。',
-        aboutTitle: '关于 MajorSportsEvents',
-        aboutContent: 'MajorSportsEvents 是面向全球最具影响力团队运动的企业级信息平台。我们基于官方来源核实每场赛事，提供用于自动化的结构化数据，并以专业界面服务管理层沟通。',
-        footerRights: '所提及赛事的所有权归其官方主办方所有。',
-        footerApi: '内部端点：/.netlify/functions/fetch-events、/.netlify/functions/export-json、/.netlify/functions/export-csv、/.netlify/functions/generate-ics、/.netlify/functions/export-pdf。',
-        footerAttribution: '为企业利益相关者与可信合作伙伴打造的简洁多语言知识界面。',
-        male: '男子',
-        female: '女子',
-        club: '俱乐部',
-        national: '国家队',
-        world: '世界级',
-        continental: '洲际',
-        vs: '对阵',
-        updatedAt: '更新时间',
-        timezone: '当地时区',
-        stats: '统计',
-        travel: '酒店',
-        flights: '航班',
-        info: '信息',
-        odds: '赔率',
-        widgetSectionTitle: 'API-Sports 实时内容',
-        widgetSectionIntro: '切换运动项目和语言，查看 API-Sports 提供的实时目录。',
-        widgetSportLabel: '运动项目',
-        widgetLangLabel: '语言',
-        widgetThemeLabel: '主题',
-        widgetNote: '这些组件使用提供的企业密钥直接从 API-Sports 渲染。',
-        widgetSummary: '当前显示 {language} 的 {sport} 数据。',
-        widgetSportFootball: '足球',
-        widgetSportAmericanFootball: '美式橄榄球',
-        widgetSportBasketball: '篮球',
-        widgetSportBaseball: '棒球',
-        widgetSportCricket: '板球',
-        widgetSportRugby: '英式橄榄球',
-        widgetSportHockey: '冰球',
-        widgetSportTennis: '网球',
-        widgetLangEnglish: '英语',
-        widgetLangPortuguese: '葡萄牙语',
-        widgetLangSpanish: '西班牙语',
-        widgetLangFrench: '法语',
-        widgetLangRussian: '俄语',
-        widgetLangChinese: '中文',
-        widgetLangGerman: '德语',
-        widgetLangItalian: '意大利语',
-        widgetThemeLight: '浅色',
-        widgetThemeDark: '深色'
-      }
-    };
-    const state = {
-      lang: DEFAULT_LANGUAGE,
-      sportsConfig: [],
-      events: [],
-      filters: {
-        sport: '',
-        competition: '',
-        type: '',
-        gender: '',
-        region: '',
-        country: '',
-        team: '',
-        from: '',
-        to: ''
+        name:"中文 (简体)", title:"全球体育盛事",
+        tag:"一个世界，所有体育，实时更新。",
+        about:"关于",
+        lead:"通往世界最大体育赛事的全球门户。",
+        b1:"通过动态日历，实时追踪国际赛事：足球、篮球、网球、赛车等。",
+        b2:"关注你喜爱的球队和国家。",
+        b3:"订阅日历，按你的时区自动更新，兼容 Google、Apple 与 Outlook。",
+        cta1:"订阅赛事日历", cta2:"浏览赛事", langLabel:"语言",
+        domain:"MajorSportsEvents.com — 一个世界，所有体育，实时更新。"
       },
-      widget: {
-        sport: 'football',
-        lang: 'en',
-        theme: 'white',
-        manualLang: false
+      es: {
+        name:"Español", title:"Eventos Deportivos Mayores",
+        tag:"Un mundo, todos los deportes, siempre actualizado.",
+        about:"Acerca de",
+        lead:"Tu puerta al mundo de los deportes globales.",
+        b1:"Mantente conectado con calendarios dinámicos en vivo de competiciones internacionales: fútbol, baloncesto, tenis, automovilismo y más.",
+        b2:"Sigue a tus equipos y países favoritos.",
+        b3:"Suscríbete a calendarios que se actualizan automáticamente en tu zona horaria en Google, Apple u Outlook.",
+        cta1:"Suscribirse a un calendario", cta2:"Explorar eventos", langLabel:"Idioma",
+        domain:"MajorSportsEvents.com — Un mundo, todos los deportes, siempre actualizado."
       },
-      updatedAt: null
+      hi: {
+        name:"हिन्दी", title:"मेजर स्पोर्ट्स इवेंट्स",
+        tag:"एक दुनिया, सभी खेल, हमेशा अपडेटेड।",
+        about:"परिचय",
+        lead:"दुनिया के सबसे बड़े खेल आयोजनों का आपका वैश्विक द्वार।",
+        b1:"लाइव और डायनेमिक कैलेंडर के साथ जुड़े रहें — फुटबॉल, बास्केटबॉल, टेनिस, मोटरस्पोर्ट्स और बहुत कुछ।",
+        b2:"अपनी पसंदीदा टीमों और देशों को फॉलो करें।",
+        b3:"गूगल, एप्पल या आउटलुक में आपकी टाइमज़ोन के अनुसार ऑटो‑अपडेट होने वाले कैलेंडर की सदस्यता लें।",
+        cta1:"कैलेंडर सबस्क्राइब करें", cta2:"इवेंट्स देखें", langLabel:"भाषा",
+        domain:"MajorSportsEvents.com — एक दुनिया, सभी खेल, हमेशा अपडेटेड।"
+      },
+      ar: {
+        name:"العربية", title:"الأحداث الرياضية الكبرى",
+        tag:"عالم واحد، جميع الرياضات، مُحدّث دائمًا.",
+        about:"نبذة",
+        lead:"بوابتك العالمية إلى أكبر البطولات الرياضية في العالم.",
+        b1:"ابقَ على اتصال مع تقاويم حية وديناميكية للمسابقات الدولية — كرة القدم، كرة السلة، التنس، سباقات السيارات والمزيد.",
+        b2:"تابع فرقك ودولك المفضلة.",
+        b3:"اشترك في تقاويم تُحدَّث تلقائيًا حسب منطقتك الزمنية على Google أو Apple أو Outlook.",
+        cta1:"اشترك في تقويم", cta2:"استكشف الفعاليات", langLabel:"اللغة",
+        domain:"MajorSportsEvents.com — عالم واحد، جميع الرياضات، محدث دائمًا."
+      },
+      pt: {
+        name:"Português", title:"Grandes Eventos Desportivos",
+        tag:"Um mundo, todos os desportos, sempre atualizado.",
+        about:"Sobre",
+        lead:"A tua porta de entrada para o desporto global.",
+        b1:"Mantém‑te ligado com calendários dinâmicos e atualizados dos maiores eventos internacionais — futebol, basquetebol, ténis, automobilismo e muito mais.",
+        b2:"Segue as tuas equipas e países favoritos.",
+        b3:"Subscreve calendários que se atualizam automaticamente no teu fuso horário, compatíveis com Google, Apple e Outlook.",
+        cta1:"Subscrever um calendário", cta2:"Explorar eventos", langLabel:"Idioma",
+        domain:"MajorSportsEvents.com — Um mundo, todos os desportos, sempre atualizado."
+      },
+      bn: {
+        name:"বাংলা", title:"মেজর স্পোর্টস ইভেন্টস",
+        tag:"এক পৃথিবী, সব খেলা, সবসময় আপডেট।",
+        about:"পরিচিতি",
+        lead:"বিশ্বের সবচেয়ে বড় ক্রীড়া ইভেন্টগুলির জন্য আপনার গ্লোবাল গেটওয়ে।",
+        b1:"লাইভ, ডাইনামিক ক্যালেন্ডার দিয়ে সংযুক্ত থাকুন — ফুটবল, বাস্কেটবল, টেনিস, মোটরস্পোর্টস এবং আরও অনেক কিছু।",
+        b2:"আপনার প্রিয় দল এবং দেশগুলো অনুসরণ করুন।",
+        b3:"আপনার টাইমজোন অনুযায়ী স্বয়ংক্রিয়ভাবে আপডেট হওয়া ক্যালেন্ডার সাবস্ক্রাইব করুন (Google/Apple/Outlook)।",
+        cta1:"ক্যালেন্ডার সাবস্ক্রাইব করুন", cta2:"ইভেন্ট দেখুন", langLabel:"ভাষা",
+        domain:"MajorSportsEvents.com — এক পৃথিবী, সব খেলা, সবসময় আপডেট।"
+      },
+      ru: {
+        name:"Русский", title:"Крупнейшие спортивные события",
+        tag:"Один мир, все виды спорта, всегда актуально.",
+        about:"О проекте",
+        lead:"Ваш глобальный портал в мир крупнейших спортивных турниров.",
+        b1:"Следите за живыми динамическими календарями международных соревнований — футбол, баскетбол, теннис, автоспорт и многое другое.",
+        b2:"Подписывайтесь на любимые команды и страны.",
+        b3:"Календари автоматически обновляются по вашему часовому поясу (Google, Apple, Outlook).",
+        cta1:"Подписаться на календарь", cta2:"Смотреть события", langLabel:"Язык",
+        domain:"MajorSportsEvents.com — Один мир, все виды спорта, всегда актуально."
+      },
+      ja: {
+        name:"日本語", title:"メジャースポーツイベント",
+        tag:"一つの世界、すべてのスポーツ、常に最新。",
+        about:"概要",
+        lead:"世界最大のスポーツ大会へのグローバルゲートウェイ。",
+        b1:"サッカー、バスケットボール、テニス、モータースポーツなど国際大会のライブ・ダイナミックカレンダーをチェック。",
+        b2:"お気に入りのチームや国をフォロー。",
+        b3:"Google / Apple / Outlook で自動的に更新されるカレンダーを購読。",
+        cta1:"カレンダーを購読", cta2:"イベントを探す", langLabel:"言語",
+        domain:"MajorSportsEvents.com — 一つの世界、すべてのスポーツ、常に最新。"
+      },
+      fr: {
+        name:"Français", title:"Grands Événements Sportifs",
+        tag:"Un monde, tous les sports, toujours à jour.",
+        about:"À propos",
+        lead:"Votre passerelle mondiale vers les plus grands sports.",
+        b1:"Restez connecté grâce à des calendriers dynamiques en direct — football, basket-ball, tennis, sports mécaniques et plus encore.",
+        b2:"Suivez vos équipes et pays favoris.",
+        b3:"Abonnez-vous à des calendriers qui se mettent à jour automatiquement selon votre fuseau horaire (Google, Apple, Outlook).",
+        cta1:"S’abonner à un calendrier", cta2:"Explorer les événements", langLabel:"Langue",
+        domain:"MajorSportsEvents.com — Un monde, tous les sports, toujours à jour."
+      }
     };
 
-    const elements = {
-      languageSelector: document.getElementById('language-selector'),
-      refreshButton: document.getElementById('refresh-button'),
-      filterSport: document.getElementById('filter-sport'),
-      filterCompetition: document.getElementById('filter-competition'),
-      filterType: document.getElementById('filter-type'),
-      filterGender: document.getElementById('filter-gender'),
-      filterRegion: document.getElementById('filter-region'),
-      filterCountry: document.getElementById('filter-country'),
-      filterTeam: document.getElementById('filter-team'),
-      filterFrom: document.getElementById('filter-from'),
-      filterTo: document.getElementById('filter-to'),
-      clearFilters: document.getElementById('clear-filters'),
-      eventsGrid: document.getElementById('events-grid'),
-      archiveGrid: document.getElementById('archive-grid'),
-      loading: document.getElementById('events-loading'),
-      empty: document.getElementById('events-empty'),
-      error: document.getElementById('events-error'),
-      statsUpdated: document.querySelector('[data-role="stats-updated"]'),
-      statsCount: document.querySelector('[data-role="stats-count"]'),
-      resultsSummary: document.querySelector('[data-role="results-summary"]'),
-      aiJson: document.getElementById('ai-json'),
-      partnersList: document.getElementById('partners-list'),
-      exportButtons: document.querySelectorAll('.export-panel button[data-export]'),
-      structuredData: document.getElementById('structured-data'),
-      widgetSport: document.getElementById('widget-sport'),
-      widgetLang: document.getElementById('widget-lang'),
-      widgetTheme: document.getElementById('widget-theme'),
-      widgetContainer: document.getElementById('api-widget-container'),
-      widgetSummary: document.querySelector('[data-role="widget-summary"]')
-    };
+    const langSelect = document.getElementById('lang');
+    const userPref = localStorage.getItem('mse_lang');
+    const browserLang = (navigator.language||'en').toLowerCase();
+    const guess = (userPref) || (browserLang.startsWith('pt')?'pt':
+                  browserLang.startsWith('es')?'es':
+                  browserLang.startsWith('fr')?'fr':
+                  browserLang.startsWith('ar')?'ar':
+                  browserLang.startsWith('zh')?'zh':
+                  browserLang.startsWith('hi')?'hi':
+                  browserLang.startsWith('bn')?'bn':
+                  browserLang.startsWith('ja')?'ja':
+                  browserLang.startsWith('ru')?'ru':'en');
 
-    function t(key) {
-      return translations[state.lang]?.[key] || translations[DEFAULT_LANGUAGE][key] || key;
+    const order = ['en','zh','es','hi','ar','pt','bn','ru','ja','fr'];
+    for (const key of order){
+      const opt=document.createElement('option');
+      opt.value=key; opt.textContent=translations[key].name; langSelect.appendChild(opt);
     }
 
-    function setLanguage(lang) {
-      state.lang = translations[lang] ? lang : DEFAULT_LANGUAGE;
-      document.documentElement.lang = state.lang;
-      elements.languageSelector.value = state.lang;
-      document.querySelectorAll('[data-i18n]').forEach((node) => {
-        const key = node.dataset.i18n;
-        const translation = t(key);
-        if (node.tagName === 'INPUT' || node.tagName === 'TEXTAREA') {
-          node.placeholder = translation;
-        } else {
-          node.textContent = translation;
-        }
-      });
-      elements.filterCountry.placeholder = t('country');
-      elements.filterTeam.placeholder = t('team');
-      document.title = t('title');
-      updateWidgetOptionsText();
-      if (elements.widgetLang) {
-        if (!state.widget.manualLang && WIDGET_LANG_KEYS[state.lang]) {
-          state.widget.lang = state.lang;
-        }
-        elements.widgetLang.value = state.widget.lang;
-      }
-      if (elements.widgetSport) {
-        elements.widgetSport.value = state.widget.sport;
-      }
-      if (elements.widgetTheme) {
-        elements.widgetTheme.value = state.widget.theme;
-      }
-      updateWidgetSummary();
-      renderApiSportsWidgets(true);
-      renderEvents();
+    function applyLang(code){
+      const t = translations[code]||translations.en;
+      document.documentElement.lang = code;
+      document.getElementById('title').textContent = t.title;
+      document.getElementById('tag').textContent = t.tag;
+      document.getElementById('aboutHeading').textContent = t.about;
+      document.getElementById('lead').textContent = t.lead;
+      document.getElementById('b1').textContent = t.b1;
+      document.getElementById('b2').textContent = t.b2;
+      document.getElementById('b3').textContent = t.b3;
+      document.getElementById('cta1').textContent = t.cta1;
+      document.getElementById('cta2').textContent = t.cta2;
+      document.getElementById('langLabel').textContent = t.langLabel;
+      document.getElementById('domainLine').textContent = t.domain;
+      langSelect.value = code;
+      localStorage.setItem('mse_lang', code);
+      document.title = `${t.title} — ${translations.en.title}`;
     }
 
-    function option(value, label) {
-      const opt = document.createElement('option');
-      opt.value = value;
-      opt.textContent = label;
-      return opt;
-    }
+    applyLang(guess);
 
-    function updateWidgetOptionsText() {
-      document.querySelectorAll('[data-i18n-option]').forEach((option) => {
-        const key = option.dataset.i18nOption;
-        if (key) {
-          option.textContent = t(key);
-        }
-      });
-    }
-
-    function getWidgetLabel(type, value) {
-      const lookup = type === 'sport' ? WIDGET_SPORT_KEYS : WIDGET_LANG_KEYS;
-      const translationKey = lookup?.[value];
-      return translationKey ? t(translationKey) : value;
-    }
-
-    function updateWidgetSummary() {
-      if (!elements.widgetSummary) return;
-      const template = t('widgetSummary');
-      const sportLabel = getWidgetLabel('sport', state.widget.sport);
-      const languageLabel = getWidgetLabel('language', state.widget.lang);
-      elements.widgetSummary.textContent = template
-        .replace('{sport}', sportLabel)
-        .replace('{language}', languageLabel);
-    }
-
-    function loadApiSportsScript(forceReload = false) {
-      if (!document.body) return;
-      const existing = document.querySelector('script[data-api-sports-widget]');
-      if (existing && !forceReload) {
-        if (window.API_SPORTS?.widgets?.init) {
-          window.API_SPORTS.widgets.init();
-        }
-        return;
-      }
-      if (existing) {
-        existing.remove();
-      }
-      const script = document.createElement('script');
-      script.src = WIDGET_SCRIPT_SRC;
-      script.async = true;
-      script.dataset.apiSportsWidget = 'true';
-      document.body.appendChild(script);
-    }
-
-    function renderApiSportsWidgets(forceReload = false) {
-      if (!elements.widgetContainer || !API_WIDGET_KEY) return;
-      elements.widgetContainer.innerHTML = '';
-      ['leagues', 'config'].forEach((type) => {
-        const widget = document.createElement('api-sports-widget');
-        widget.dataset.type = type;
-        widget.dataset.key = API_WIDGET_KEY;
-        widget.dataset.sport = state.widget.sport;
-        widget.dataset.lang = state.widget.lang;
-        widget.dataset.theme = state.widget.theme;
-        widget.dataset.showErrors = 'true';
-        elements.widgetContainer.appendChild(widget);
-      });
-      loadApiSportsScript(forceReload);
-    }
-
-    function syncWidgetSelectors() {
-      if (elements.widgetSport) {
-        elements.widgetSport.value = state.widget.sport;
-      }
-      if (elements.widgetLang) {
-        elements.widgetLang.value = state.widget.lang;
-      }
-      if (elements.widgetTheme) {
-        elements.widgetTheme.value = state.widget.theme;
-      }
-    }
-
-    function initWidgetControls() {
-      if (!elements.widgetSport || !elements.widgetLang || !elements.widgetTheme) return;
-      elements.widgetSport.addEventListener('change', () => {
-        state.widget.sport = elements.widgetSport.value;
-        renderApiSportsWidgets(true);
-        updateWidgetSummary();
-      });
-      elements.widgetLang.addEventListener('change', () => {
-        state.widget.lang = elements.widgetLang.value;
-        state.widget.manualLang = true;
-        renderApiSportsWidgets(true);
-        updateWidgetSummary();
-      });
-      elements.widgetTheme.addEventListener('change', () => {
-        state.widget.theme = elements.widgetTheme.value;
-        renderApiSportsWidgets(true);
-      });
-      syncWidgetSelectors();
-      if (!elements.widgetContainer.children.length) {
-        renderApiSportsWidgets(true);
-      }
-      updateWidgetSummary();
-    }
-
-    function populateFilters() {
-      const sports = state.sportsConfig;
-      const regions = new Set();
-      const types = new Set();
-      const genders = new Set();
-
-      elements.filterSport.innerHTML = '';
-      elements.filterCompetition.innerHTML = '';
-      elements.filterType.innerHTML = '';
-      elements.filterGender.innerHTML = '';
-      elements.filterRegion.innerHTML = '';
-
-      elements.filterSport.appendChild(option('', t('sport')));
-      elements.filterCompetition.appendChild(option('', t('competition')));
-      elements.filterType.appendChild(option('', t('type')));
-      elements.filterGender.appendChild(option('', t('gender')));
-      elements.filterRegion.appendChild(option('', t('region')));
-
-      sports.forEach((sport) => {
-        elements.filterSport.appendChild(option(sport.id, `${sport.name}`));
-        sport.competitions.forEach((competition) => {
-          const opt = option(competition.id, `${competition.name}`);
-          opt.dataset.sport = sport.id;
-          elements.filterCompetition.appendChild(opt);
-          regions.add(competition.region);
-          types.add(competition.type);
-          genders.add(competition.gender);
-        });
-      });
-
-      types.forEach((type) => elements.filterType.appendChild(option(type, t(type) || type)));
-      genders.forEach((gender) => elements.filterGender.appendChild(option(gender, t(gender) || gender)));
-      regions.forEach((region) => elements.filterRegion.appendChild(option(region, region.replace(/-/g, ' '))));
-    }
-
-    function onSportChange() {
-      const selectedSport = elements.filterSport.value;
-      Array.from(elements.filterCompetition.options).forEach((opt) => {
-        if (!opt.value) return;
-        opt.hidden = selectedSport && opt.dataset.sport !== selectedSport;
-      });
-      if (selectedSport) {
-        const firstVisible = Array.from(elements.filterCompetition.options).find((opt) => !opt.hidden && opt.value === state.filters.competition);
-        if (!firstVisible) {
-          elements.filterCompetition.value = '';
-          state.filters.competition = '';
-        }
-      }
-      applyFiltersFromUI();
-    }
-
-    function getFiltersFromUI() {
-      state.filters = {
-        sport: elements.filterSport.value,
-        competition: elements.filterCompetition.value,
-        type: elements.filterType.value,
-        gender: elements.filterGender.value,
-        region: elements.filterRegion.value,
-        country: elements.filterCountry.value.trim(),
-        team: elements.filterTeam.value.trim(),
-        from: elements.filterFrom.value,
-        to: elements.filterTo.value
-      };
-      return state.filters;
-    }
-
-    function eventMatchesFilters(event, filters) {
-      const lower = (value) => value?.toLowerCase() || '';
-      if (filters.sport && event.sportId !== filters.sport) return false;
-      if (filters.competition && event.competitionId !== filters.competition) return false;
-      if (filters.type && event.type !== filters.type) return false;
-      if (filters.gender && event.gender !== filters.gender) return false;
-      if (filters.region && event.region !== filters.region) return false;
-      if (filters.country && !lower(event.country).includes(lower(filters.country)) && !lower(event.venue?.country).includes(lower(filters.country))) return false;
-      if (filters.team) {
-        const query = lower(filters.team);
-        const teamMatches = [event.teams?.home?.name, event.teams?.home?.shortName, event.teams?.away?.name, event.teams?.away?.shortName]
-          .filter(Boolean)
-          .map(lower)
-          .some((value) => value.includes(query));
-        if (!teamMatches) return false;
-      }
-      if (filters.from) {
-        const fromDate = new Date(filters.from);
-        if (new Date(event.startDate) < fromDate) return false;
-      }
-      if (filters.to) {
-        const toDate = new Date(filters.to);
-        if (new Date(event.startDate) > toDate) return false;
-      }
-      return true;
-    }
-
-    function splitEvents(events) {
-      const now = Date.now();
-      const upcoming = [];
-      const past = [];
-      events.forEach((event) => {
-        const date = new Date(event.startDate).getTime();
-        if (!Number.isFinite(date) || date >= now) {
-          upcoming.push(event);
-        } else {
-          past.push(event);
-        }
-      });
-      return {
-        upcoming: upcoming.sort((a, b) => new Date(a.startDate) - new Date(b.startDate)),
-        past: past.sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
-      };
-    }
-
-    function formatDate(dateString, options = {}) {
-      const date = new Date(dateString);
-      if (!Number.isFinite(date.getTime())) return 'TBA';
-      return new Intl.DateTimeFormat(state.lang, {
-        dateStyle: options.dateStyle || 'medium',
-        timeStyle: options.timeStyle || 'short'
-      }).format(date);
-    }
-
-    function renderEvents() {
-      if (!state.events.length) {
-        elements.loading.hidden = true;
-        elements.error.hidden = true;
-        elements.eventsGrid.innerHTML = '';
-        elements.archiveGrid.innerHTML = '';
-        elements.empty.hidden = false;
-        elements.statsCount.textContent = `0 ${t('upcomingTitle').toLowerCase()} · 0 ${t('archiveTitle').toLowerCase()}`;
-        elements.resultsSummary.textContent = `0 ${t('upcomingTitle').toLowerCase()} · 0 ${t('archiveTitle').toLowerCase()}`;
-        elements.statsUpdated.innerHTML = `${t('lastUpdated')} <time>—</time>`;
-        updateAiPanel([]);
-        updateStructuredData([]);
-        return;
-      }
-
-      const filters = state.filters;
-      const filtered = state.events.filter((event) => eventMatchesFilters(event, filters));
-      const { upcoming, past } = splitEvents(filtered);
-
-      elements.loading.hidden = true;
-      elements.error.hidden = true;
-      elements.empty.hidden = filtered.length !== 0;
-
-      elements.eventsGrid.innerHTML = '';
-      elements.archiveGrid.innerHTML = '';
-
-      upcoming.forEach((event) => {
-        elements.eventsGrid.appendChild(renderEventCard(event));
-      });
-
-      past.slice(0, 30).forEach((event) => {
-        elements.archiveGrid.appendChild(renderEventCard(event));
-      });
-
-      elements.statsCount.textContent = `${upcoming.length} ${t('upcomingTitle').toLowerCase()} · ${past.length} ${t('archiveTitle').toLowerCase()}`;
-      elements.resultsSummary.textContent = `${upcoming.length} ${t('upcomingTitle').toLowerCase()} · ${past.length} ${t('archiveTitle').toLowerCase()}`;
-      elements.statsUpdated.innerHTML = `${t('lastUpdated')} <time>${state.updatedAt ? formatDate(state.updatedAt, { dateStyle: 'short', timeStyle: 'short' }) : '—'}</time>`;
-      updateAiPanel(filtered);
-      updateStructuredData(filtered);
-    }
-
-    function renderEventCard(event) {
-      const card = document.createElement('article');
-      card.className = 'event-card';
-      card.dataset.sport = event.sportId;
-
-      const header = document.createElement('header');
-      const datetime = document.createElement('div');
-      datetime.className = 'datetime';
-      datetime.textContent = formatDate(event.startDate, { dateStyle: 'full', timeStyle: 'short' });
-
-      const timezone = document.createElement('div');
-      timezone.className = 'timezone';
-      timezone.textContent = `${t('timezone')}: ${event.timezone || 'UTC'}`;
-
-      const competition = document.createElement('div');
-      competition.textContent = `${event.sportName} · ${event.competitionName}`;
-
-      const badges = document.createElement('div');
-      badges.className = 'badges';
-      const badgeType = document.createElement('span');
-      badgeType.className = 'badge';
-      badgeType.textContent = t(event.type) || event.type;
-      const badgeGender = document.createElement('span');
-      badgeGender.className = 'badge';
-      badgeGender.textContent = t(event.gender) || event.gender;
-      const badgeLevel = document.createElement('span');
-      badgeLevel.className = 'badge neutral';
-      badgeLevel.textContent = t(event.level) || event.level;
-      badges.append(badgeType, badgeGender, badgeLevel);
-
-      header.append(datetime, timezone, competition, badges);
-
-      const teams = document.createElement('div');
-      teams.className = 'teams';
-      const home = document.createElement('span');
-      home.textContent = event.teams?.home?.name || 'TBD';
-      const separator = document.createElement('span');
-      separator.className = 'separator';
-      separator.textContent = t('vs');
-      const away = document.createElement('span');
-      away.textContent = event.teams?.away?.name || 'TBD';
-      teams.append(home, separator, away);
-
-      const meta = document.createElement('div');
-      meta.className = 'event-meta';
-      if (event.venue?.name) {
-        const venue = document.createElement('span');
-        venue.textContent = `${event.venue.name}${event.venue.city ? ' · ' + event.venue.city : ''}${event.venue.country ? ', ' + event.venue.country : ''}`;
-        meta.appendChild(venue);
-      }
-      if (event.statusText) {
-        const status = document.createElement('span');
-        status.textContent = event.statusText;
-        meta.appendChild(status);
-      }
-
-      const links = document.createElement('div');
-      links.className = 'event-links';
-      if (event.travel?.hotel) {
-        const hotel = document.createElement('a');
-        hotel.href = event.travel.hotel;
-        hotel.target = '_blank';
-        hotel.rel = 'noopener';
-        hotel.textContent = t('travel');
-        links.appendChild(hotel);
-      }
-      if (event.travel?.flight) {
-        const flight = document.createElement('a');
-        flight.href = event.travel.flight;
-        flight.target = '_blank';
-        flight.rel = 'noopener';
-        flight.textContent = t('flights');
-        links.appendChild(flight);
-      }
-      if (event.links?.stats) {
-        const stats = document.createElement('a');
-        stats.href = event.links.stats;
-        stats.target = '_blank';
-        stats.rel = 'noopener';
-        stats.textContent = t('stats');
-        links.appendChild(stats);
-      }
-      if (event.links?.website) {
-        const info = document.createElement('a');
-        info.href = event.links.website;
-        info.target = '_blank';
-        info.rel = 'noopener';
-        info.textContent = t('info');
-        links.appendChild(info);
-      }
-      if (event.betting?.dataEndpointTemplate) {
-        const odds = document.createElement('a');
-        odds.href = event.betting.dataEndpointTemplate;
-        odds.target = '_blank';
-        odds.rel = 'noopener';
-        odds.textContent = t('odds');
-        links.appendChild(odds);
-      }
-
-      card.append(header, teams, meta, links);
-      return card;
-    }
-
-    function updateAiPanel(events) {
-      const payload = {
-        generatedAt: new Date().toISOString(),
-        language: state.lang,
-        filters: state.filters,
-        total: events.length,
-        events
-      };
-      window.MSE_AI_FEED = payload;
-      elements.aiJson.textContent = JSON.stringify(payload, null, 2);
-    }
-
-    function updateStructuredData(events) {
-      const dataset = {
-        '@context': 'https://schema.org',
-        '@type': 'Dataset',
-        'name': t('title'),
-        'description': t('missionText'),
-        'keywords': ['football', 'soccer', 'NFL', 'NBA', 'cricket', 'rugby', 'global sports schedule', 'enterprise calendar'],
-        'creator': {
-          '@type': 'Organization',
-          'name': 'MajorSportsEvents'
-        },
-        'distribution': [
-          {
-            '@type': 'DataDownload',
-            'encodingFormat': 'application/json',
-            'contentUrl': `${window.location.origin}${API_BASE}/export-json`
-          },
-          {
-            '@type': 'DataDownload',
-            'encodingFormat': 'text/csv',
-            'contentUrl': `${window.location.origin}${API_BASE}/export-csv`
-          }
-        ],
-        'variableMeasured': ['sport', 'competition', 'continent', 'gender', 'teams', 'timezone'],
-        'dateModified': state.updatedAt,
-        'hasPart': events.slice(0, 50).map((event) => ({
-          '@type': 'SportsEvent',
-          'name': `${event.teams?.home?.name || 'TBD'} vs ${event.teams?.away?.name || 'TBD'} (${event.competitionName})`,
-          'sport': event.sportName,
-          'startDate': event.startDate,
-          'endDate': event.endDate,
-          'eventAttendanceMode': 'https://schema.org/OfflineEventAttendanceMode',
-          'eventStatus': event.status,
-          'location': event.venue?.name ? {
-            '@type': 'Place',
-            'name': event.venue.name,
-            'address': {
-              '@type': 'PostalAddress',
-              'addressCountry': event.venue.country,
-              'addressLocality': event.venue.city
-            }
-          } : undefined
-        }))
-      };
-      elements.structuredData.textContent = JSON.stringify(dataset, null, 2);
-    }
-
-    function setLoading(isLoading) {
-      elements.loading.hidden = !isLoading;
-      if (isLoading) {
-        elements.loading.textContent = t('loading');
-      }
-    }
-
-    function showError(messageKey) {
-      elements.error.hidden = false;
-      elements.error.textContent = translations[state.lang][messageKey] || messageKey;
-    }
-
-    async function loadConfig() {
-      try {
-        const response = await fetch(`${API_BASE}/site-config`);
-        const data = await response.json();
-        state.sportsConfig = data.sports || [];
-        populateFilters();
-        renderPartners(data);
-      } catch (error) {
-        console.warn('Unable to load config', error);
-      }
-    }
-
-    function renderPartners(data) {
-      if (!data?.travelPartners && !data?.bettingPartners) return;
-      elements.partnersList.innerHTML = '';
-      const fragment = document.createDocumentFragment();
-      [...(data.travelPartners || []), ...(data.bettingPartners || [])].forEach((partner) => {
-        const li = document.createElement('li');
-        li.textContent = `${partner.name} · ${partner.baseUrl}${partner.apiDocs ? ` · docs: ${partner.apiDocs}` : ''}`;
-        fragment.appendChild(li);
-      });
-      elements.partnersList.appendChild(fragment);
-    }
-
-    async function loadEvents({ refresh = false } = {}) {
-      setLoading(true);
-      elements.error.hidden = true;
-      elements.empty.hidden = true;
-      try {
-        const params = new URLSearchParams();
-        if (refresh) params.set('refresh', 'true');
-        const response = await fetch(`${API_BASE}/fetch-events${params.toString() ? `?${params}` : ''}`);
-        if (!response.ok) throw new Error('network');
-        const payload = await response.json();
-        state.events = payload.events || [];
-        state.updatedAt = payload.updatedAt;
-        window.MSE_EVENTS = state.events;
-        setLoading(false);
-        renderEvents();
-      } catch (error) {
-        console.error(error);
-        setLoading(false);
-        showError('error');
-      }
-    }
-
-    function clearFilters() {
-      Object.assign(state.filters, {
-        sport: '',
-        competition: '',
-        type: '',
-        gender: '',
-        region: '',
-        country: '',
-        team: '',
-        from: '',
-        to: ''
-      });
-      elements.filterSport.value = '';
-      elements.filterCompetition.value = '';
-      elements.filterType.value = '';
-      elements.filterGender.value = '';
-      elements.filterRegion.value = '';
-      elements.filterCountry.value = '';
-      elements.filterTeam.value = '';
-      elements.filterFrom.value = '';
-      elements.filterTo.value = '';
-      renderEvents();
-    }
-
-    function applyFiltersFromUI() {
-      getFiltersFromUI();
-      renderEvents();
-    }
-
-    function exportCalendar(format) {
-      const params = new URLSearchParams();
-      Object.entries(state.filters).forEach(([key, value]) => {
-        if (value) params.set(key, value);
-      });
-      const url = `${API_BASE}/${format === 'ics' ? 'generate-ics' : `export-${format}`}${params.toString() ? `?${params}` : ''}`;
-      window.open(url, '_blank');
-    }
-
-    function initEventListeners() {
-      elements.languageSelector.addEventListener('change', (event) => setLanguage(event.target.value));
-      elements.refreshButton.addEventListener('click', () => loadEvents({ refresh: true }));
-      elements.filterSport.addEventListener('change', onSportChange);
-      [elements.filterCompetition, elements.filterType, elements.filterGender, elements.filterRegion, elements.filterCountry, elements.filterTeam, elements.filterFrom, elements.filterTo]
-        .forEach((input) => {
-          input.addEventListener('input', applyFiltersFromUI);
-          input.addEventListener('change', applyFiltersFromUI);
-        });
-      elements.clearFilters.addEventListener('click', () => {
-        clearFilters();
-        applyFiltersFromUI();
-      });
-      elements.exportButtons.forEach((button) => {
-        button.addEventListener('click', () => exportCalendar(button.dataset.export));
-      });
-    }
-
-    function init() {
-      const browserLang = navigator.language?.split('-')[0];
-      setLanguage(browserLang || DEFAULT_LANGUAGE);
-      initEventListeners();
-      initWidgetControls();
-      loadConfig().then(() => loadEvents());
-      document.getElementById('copyright-year').textContent = new Date().getFullYear();
-    }
-
-    document.addEventListener('DOMContentLoaded', init);
+    langSelect.addEventListener('change', e=> applyLang(e.target.value));
+    window.addEventListener('keydown', e=>{ if(e.key.toLowerCase()==='s'){ langSelect.focus(); }});
+    document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
