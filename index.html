@@ -5,6 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Major Sports Events — One world, all sports</title>
   <meta name="description" content="Major Sports Events — dynamic calendars of the world’s biggest sports. Subscribe per team or country. Google/Apple/Outlook ready." />
+  <meta name="color-scheme" content="light" />
+  <meta name="theme-color" content="#ffffff" />
+  <style>
+    :root{ --bg:#f7f8fb; --fg:#101828; --muted:#475467; --accent:#0052cc; --accent-hover:#0a66ff; --card:#ffffff; --border:#e4e7ec; --shadow:0 24px 48px -28px rgba(15,23,42,.25); }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;font-family:"Inter","Helvetica Neue",Arial,sans-serif;background:var(--bg);color:var(--fg);-webkit-font-smoothing:antialiased}
+    .wrap{max-width:1100px;margin:0 auto;padding:48px 32px 40px}
+    header{display:flex;gap:16px;align-items:center;justify-content:space-between}
+    .brand{display:flex;gap:16px;align-items:center}
+    .logo{width:44px;height:44px;border-radius:12px;background:linear-gradient(135deg,#0052cc 0%,#4c6ef5 50%,#c7d7ff 100%);box-shadow:0 12px 30px -16px rgba(15,23,42,.35)}
+    h1{font-size:clamp(30px,4vw,42px);margin:0;letter-spacing:-.3px;color:var(--fg)}
+    .muted{color:var(--muted)}
+    .lang{appearance:none;background:#fff;border:1px solid var(--border);color:var(--fg);padding:10px 14px;border-radius:12px;font-size:15px;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+    main{margin-top:40px;display:grid;grid-template-columns:1.1fr .9fr;gap:32px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px;position:relative;overflow:hidden;box-shadow:var(--shadow)}
+    .lead{font-size:clamp(18px,2.4vw,23px);line-height:1.55;margin:.5rem 0 1.3rem;color:#1d2939}
+    .bullets{margin:0;padding-left:20px;color:#1d2939}
+    .bullets li{margin:.45rem 0}
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+    .btn{padding:12px 18px;border-radius:12px;border:1px solid var(--border);background:#fff;color:var(--fg);text-decoration:none;font-weight:600;letter-spacing:.01em;transition:background .2s ease,transform .2s ease,box-shadow .2s ease}
+    .btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;box-shadow:0 12px 24px -18px rgba(0,82,204,.9)}
+    .btn:not(.primary):hover{transform:translateY(-1px);background:#f8f9fc;box-shadow:0 10px 24px -18px rgba(15,23,42,.18)}
+    .btn.primary:hover{transform:translateY(-1px);background:var(--accent-hover);box-shadow:0 16px 32px -20px rgba(10,102,255,.45)}
+    footer{margin-top:56px;display:flex;align-items:center;justify-content:space-between;gap:10px;color:var(--muted);font-size:14px}
+    .tag{font-weight:600;color:#1d2939}
+    @media (max-width:900px){main{grid-template-columns:1fr}}
+    .hero{aspect-ratio:16/9;border-radius:18px;border:1px solid var(--border);display:grid;place-items:center;background:radial-gradient(120% 120% at 10% 15%,rgba(76,110,245,.14),transparent 65%)}
+    .hero .rings{width:88%;max-width:560px;aspect-ratio:16/9;border-radius:24px;background:linear-gradient(135deg,rgba(0,82,204,.12),rgba(76,110,245,.08),rgba(199,215,255,.18));filter:blur(22px);opacity:.8}
+    .pill{display:inline-flex;align-items:center;gap:8px;background:#eef2ff;border:1px solid #d4dcff;color:#344054;border-radius:999px;padding:8px 14px;font-size:13px;font-weight:600}
+    .kbd{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Roboto Mono,monospace;background:#f8f9fc;border:1px solid #d0d5dd;padding:2px 6px;border-radius:6px;color:#475467}
+    .wide{grid-column:1 / -1}
+    .widget-header{display:grid;gap:8px;margin-bottom:20px}
+    .widget-sub{color:#475467;font-size:15px;line-height:1.6;max-width:58ch}
+    .widget-controls{display:grid;gap:18px;margin-bottom:20px}
+    .widget-grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+    .widget-grid label{display:grid;gap:6px;font-size:14px;color:#344054}
+    .widget-label-text{font-size:13px;color:#475467;font-weight:600;text-transform:uppercase;letter-spacing:.06em}
+    .widget-grid select{background:#fff;border:1px solid var(--border);color:var(--fg);padding:10px 12px;border-radius:12px;font-size:14px;box-shadow:0 1px 2px rgba(15,23,42,.08)}
+    .widget-note{font-size:13px;color:#475467;background:#f8f9fc;border:1px solid var(--border);padding:14px 16px;border-radius:12px;line-height:1.55}
+    .widget-frame{margin-top:12px;border-radius:16px;border:1px solid var(--border);background:#fff;min-height:360px;display:grid;place-items:center;padding:16px;box-shadow:0 18px 38px -26px rgba(15,23,42,.25)}
+    .widget-frame.loading::before{content:"";width:40px;height:40px;border-radius:50%;border:3px solid rgba(0,82,204,.2);border-top-color:rgba(0,82,204,.75);animation:spin 1s linear infinite}
+    .widget-frame iframe{width:100%;height:100%;border:0;border-radius:12px;background:#fff}
+    .widget-frame.empty{color:#667085;text-align:center;font-size:15px;line-height:1.6;padding:24px}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @media (max-width:720px){.widget-sub{font-size:14px}}
   <meta name="color-scheme" content="light dark" />
   <meta name="theme-color" content="#0a0a0a" />
   <style>
@@ -76,6 +122,30 @@
           <div style="margin-top:14px;font-size:13px" class="muted">Tip: press <span class="kbd">S</span> to open language switcher</div>
         </div>
       </section>
+      <section class="card wide" aria-labelledby="widgetHeading">
+        <div class="widget-header">
+          <h2 id="widgetHeading">Live API-Sports explorer</h2>
+          <p id="widgetSub" class="widget-sub">Stream leagues, fixtures, and standings with the official API-Sports widgets. Tune each control below to preview the combinations that matter most to your teams.</p>
+        </div>
+        <div class="widget-controls">
+          <div class="widget-grid">
+            <label id="widgetTypeLabel" for="widgetType"><span class="widget-label-text">Widget type</span>
+              <select id="widgetType" data-state="type"></select>
+            </label>
+            <label id="widgetSportLabel" for="widgetSport"><span class="widget-label-text">Sport focus</span>
+              <select id="widgetSport" data-state="sport"></select>
+            </label>
+            <label id="widgetLangLabel" for="widgetLangSelect"><span class="widget-label-text">Widget language</span>
+              <select id="widgetLangSelect" data-state="lang"></select>
+            </label>
+            <label id="widgetThemeLabel" for="widgetTheme"><span class="widget-label-text">Theme</span>
+              <select id="widgetTheme" data-state="theme"></select>
+            </label>
+          </div>
+          <div id="widgetNote" class="widget-note">The embed below refreshes instantly and uses the production key provided for this project. Some sports require upgraded plans or regional access in the API-Sports dashboard.</div>
+        </div>
+        <div id="widgetMount" class="widget-frame loading" aria-live="polite" aria-busy="true"></div>
+      </section>
     </main>
 
     <footer>
@@ -95,6 +165,41 @@
         b2:"Follow your favourite teams and countries.",
         b3:"Subscribe to calendars that automatically update in your timezone on Google Calendar, Apple, or Outlook.",
         cta1:"Subscribe to a calendar", cta2:"Explore events", langLabel:"Language",
+        domain:"MajorSportsEvents.com — One world, all sports, always up to date.",
+        widgetTitle:"Live API-Sports explorer",
+        widgetSub:"Stream leagues, fixtures, standings, and rosters with the official API-Sports widgets. Adjust each control to review coverage in real time.",
+        widgetType:"Widget type",
+        widgetSport:"Sport focus",
+        widgetLang:"Widget language",
+        widgetTheme:"Theme",
+        widgetNote:"The embed below refreshes instantly using the production key provided for this project. Some sports or widget types may require upgraded plans or region-specific access in the API-Sports dashboard.",
+        widgetTypes:{
+          leagues:"Leagues",
+          standings:"Standings",
+          fixtures:"Fixtures",
+          teams:"Teams",
+          players:"Players",
+          odds:"Odds"
+        },
+        widgetSports:{
+          football:"Football (Soccer)",
+          "american-football":"American Football (NFL)",
+          basketball:"Basketball (NBA)",
+          cricket:"Cricket",
+          rugby:"Rugby",
+          afl:"Australian Football League"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Light",
+          dark:"Dark"
+        },
+        widgetFallback:"The widget script could not be reached in this preview environment. Open the site with network access to fetch live data from API-Sports."
         domain:"MajorSportsEvents.com — One world, all sports, always up to date."
       },
       zh: {
@@ -106,6 +211,41 @@
         b2:"关注你喜爱的球队和国家。",
         b3:"订阅日历，按你的时区自动更新，兼容 Google、Apple 与 Outlook。",
         cta1:"订阅赛事日历", cta2:"浏览赛事", langLabel:"语言",
+        domain:"MajorSportsEvents.com — 一个世界，所有体育，实时更新。",
+        widgetTitle:"API-Sports 实时浏览器",
+        widgetSub:"使用官方 API-Sports 小部件即时查看联赛、赛程、排名和阵容。调整下方控件即可实时预览覆盖范围。",
+        widgetType:"组件类型",
+        widgetSport:"关注的项目",
+        widgetLang:"组件语言",
+        widgetTheme:"主题",
+        widgetNote:"下方嵌入会即时刷新，并使用本项目提供的正式密钥。部分体育或组件类型可能需要在 API-Sports 控制台中升级套餐或开通地区访问。",
+        widgetTypes:{
+          leagues:"联赛",
+          standings:"积分榜",
+          fixtures:"赛程",
+          teams:"球队",
+          players:"球员",
+          odds:"赔率"
+        },
+        widgetSports:{
+          football:"足球",
+          "american-football":"美式橄榄球 (NFL)",
+          basketball:"篮球",
+          cricket:"板球",
+          rugby:"橄榄球",
+          afl:"澳式橄榄球"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"浅色",
+          dark:"深色"
+        },
+        widgetFallback:"当前预览环境无法加载小部件脚本。请在可联网的环境中打开网站以从 API-Sports 获取实时数据。"
         domain:"MajorSportsEvents.com — 一个世界，所有体育，实时更新。"
       },
       es: {
@@ -117,6 +257,41 @@
         b2:"Sigue a tus equipos y países favoritos.",
         b3:"Suscríbete a calendarios que se actualizan automáticamente en tu zona horaria en Google, Apple u Outlook.",
         cta1:"Suscribirse a un calendario", cta2:"Explorar eventos", langLabel:"Idioma",
+        domain:"MajorSportsEvents.com — Un mundo, todos los deportes, siempre actualizado.",
+        widgetTitle:"Explorador en vivo de API-Sports",
+        widgetSub:"Consulta ligas, calendarios, clasificaciones y plantillas con los widgets oficiales de API-Sports. Ajusta cada control para revisar la cobertura en tiempo real.",
+        widgetType:"Tipo de widget",
+        widgetSport:"Deporte",
+        widgetLang:"Idioma del widget",
+        widgetTheme:"Tema",
+        widgetNote:"El embed se actualiza al instante usando la clave de producción facilitada para este proyecto. Algunos deportes o tipos de widget pueden requerir planes superiores o acceso regional en el panel de API-Sports.",
+        widgetTypes:{
+          leagues:"Ligas",
+          standings:"Clasificaciones",
+          fixtures:"Calendario",
+          teams:"Equipos",
+          players:"Jugadores",
+          odds:"Cuotas"
+        },
+        widgetSports:{
+          football:"Fútbol",
+          "american-football":"Fútbol americano (NFL)",
+          basketball:"Baloncesto (NBA)",
+          cricket:"Críquet",
+          rugby:"Rugby",
+          afl:"Fútbol australiano"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Claro",
+          dark:"Oscuro"
+        },
+        widgetFallback:"No se pudo cargar el script del widget en este entorno de vista previa. Abre el sitio con acceso a internet para obtener datos en vivo de API-Sports."
         domain:"MajorSportsEvents.com — Un mundo, todos los deportes, siempre actualizado."
       },
       hi: {
@@ -128,6 +303,41 @@
         b2:"अपनी पसंदीदा टीमों और देशों को फॉलो करें।",
         b3:"गूगल, एप्पल या आउटलुक में आपकी टाइमज़ोन के अनुसार ऑटो‑अपडेट होने वाले कैलेंडर की सदस्यता लें।",
         cta1:"कैलेंडर सबस्क्राइब करें", cta2:"इवेंट्स देखें", langLabel:"भाषा",
+        domain:"MajorSportsEvents.com — एक दुनिया, सभी खेल, हमेशा अपडेटेड।",
+        widgetTitle:"API-Sports लाइव एक्सप्लोरर",
+        widgetSub:"आधिकारिक API-Sports विजेट के साथ लीग, फिक्स्चर, स्टैंडिंग और रोस्टर तुरंत देखें। वास्तविक समय में कवरेज समझने के लिए नीचे दिए गए नियंत्रण समायोजित करें।",
+        widgetType:"विजेट प्रकार",
+        widgetSport:"खेल",
+        widgetLang:"विजेट भाषा",
+        widgetTheme:"थीम",
+        widgetNote:"नीचे दिया गया एम्बेड तुरंत रिफ्रेश होता है और इस प्रोजेक्ट के लिए उपलब्ध प्रोडक्शन की का उपयोग करता है। कुछ खेल या विजेट प्रकारों के लिए API-Sports डैशबोर्ड में उच्चतर प्लान या क्षेत्रीय एक्सेस की आवश्यकता हो सकती है।",
+        widgetTypes:{
+          leagues:"लीग",
+          standings:"अंक तालिका",
+          fixtures:"फिक्स्चर",
+          teams:"टीमें",
+          players:"खिलाड़ी",
+          odds:"ऑड्स"
+        },
+        widgetSports:{
+          football:"फ़ुटबॉल",
+          "american-football":"अमेरिकी फ़ुटबॉल (NFL)",
+          basketball:"बास्केटबॉल (NBA)",
+          cricket:"क्रिकेट",
+          rugby:"रग्बी",
+          afl:"ऑस्ट्रेलियाई फ़ुटबॉल"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"लाइट",
+          dark:"डार्क"
+        },
+        widgetFallback:"इस पूर्वावलोकन वातावरण में विजेट स्क्रिप्ट लोड नहीं हो सकी। API-Sports से लाइव डेटा देखने के लिए इंटरनेट एक्सेस वाला वातावरण उपयोग करें।"
         domain:"MajorSportsEvents.com — एक दुनिया, सभी खेल, हमेशा अपडेटेड।"
       },
       ar: {
@@ -139,6 +349,41 @@
         b2:"تابع فرقك ودولك المفضلة.",
         b3:"اشترك في تقاويم تُحدَّث تلقائيًا حسب منطقتك الزمنية على Google أو Apple أو Outlook.",
         cta1:"اشترك في تقويم", cta2:"استكشف الفعاليات", langLabel:"اللغة",
+        domain:"MajorSportsEvents.com — عالم واحد، جميع الرياضات، محدث دائمًا.",
+        widgetTitle:"مستكشف API-Sports المباشر",
+        widgetSub:"اعرض الدوريات والمباريات والتصنيفات وقوائم الفرق باستخدام ودجات API-Sports الرسمية. عدّل عناصر التحكّم أدناه لمراجعة التغطية في الوقت الفعلي.",
+        widgetType:"نوع الودجت",
+        widgetSport:"الرياضة",
+        widgetLang:"لغة الودجت",
+        widgetTheme:"السمة",
+        widgetNote:"يتم تحديث التضمين أدناه فورًا باستخدام مفتاح الإنتاج المخصص لهذا المشروع. قد تتطلب بعض الرياضات أو أنواع الودجات خططًا أعلى أو صلاحيات إقليمية داخل لوحة تحكم API-Sports.",
+        widgetTypes:{
+          leagues:"الدوريات",
+          standings:"جداول الترتيب",
+          fixtures:"المباريات",
+          teams:"الفرق",
+          players:"اللاعبون",
+          odds:"احتمالات الرهانات"
+        },
+        widgetSports:{
+          football:"كرة القدم",
+          "american-football":"كرة القدم الأمريكية (NFL)",
+          basketball:"كرة السلة",
+          cricket:"الكريكيت",
+          rugby:"الرغبي",
+          afl:"كرة القدم الأسترالية"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"فاتح",
+          dark:"داكن"
+        },
+        widgetFallback:"تعذّر تحميل سكربت الودجت في بيئة المعاينة الحالية. افتح الموقع مع اتصال بالإنترنت لجلب البيانات الحية من API-Sports."
         domain:"MajorSportsEvents.com — عالم واحد، جميع الرياضات، محدث دائمًا."
       },
       pt: {
@@ -150,6 +395,41 @@
         b2:"Segue as tuas equipas e países favoritos.",
         b3:"Subscreve calendários que se atualizam automaticamente no teu fuso horário, compatíveis com Google, Apple e Outlook.",
         cta1:"Subscrever um calendário", cta2:"Explorar eventos", langLabel:"Idioma",
+        domain:"MajorSportsEvents.com — Um mundo, todos os desportos, sempre atualizado.",
+        widgetTitle:"Explorador ao vivo da API-Sports",
+        widgetSub:"Vê ligas, calendários, classificações e plantéis com os widgets oficiais da API-Sports. Ajusta os controlos para avaliar a cobertura em tempo real.",
+        widgetType:"Tipo de widget",
+        widgetSport:"Modalidade",
+        widgetLang:"Idioma do widget",
+        widgetTheme:"Tema",
+        widgetNote:"O embed abaixo atualiza de imediato e usa a chave de produção fornecida para este projeto. Algumas modalidades ou tipos de widget podem exigir planos superiores ou acesso regional no painel da API-Sports.",
+        widgetTypes:{
+          leagues:"Ligas",
+          standings:"Classificações",
+          fixtures:"Calendário",
+          teams:"Equipas",
+          players:"Jogadores",
+          odds:"Odds"
+        },
+        widgetSports:{
+          football:"Futebol",
+          "american-football":"Futebol americano (NFL)",
+          basketball:"Basquetebol (NBA)",
+          cricket:"Críquete",
+          rugby:"Râguebi",
+          afl:"Futebol australiano"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Claro",
+          dark:"Escuro"
+        },
+        widgetFallback:"Não foi possível carregar o script do widget neste ambiente de pré-visualização. Abre o site com acesso à internet para obter dados em direto da API-Sports."
         domain:"MajorSportsEvents.com — Um mundo, todos os desportos, sempre atualizado."
       },
       bn: {
@@ -161,6 +441,41 @@
         b2:"আপনার প্রিয় দল এবং দেশগুলো অনুসরণ করুন।",
         b3:"আপনার টাইমজোন অনুযায়ী স্বয়ংক্রিয়ভাবে আপডেট হওয়া ক্যালেন্ডার সাবস্ক্রাইব করুন (Google/Apple/Outlook)।",
         cta1:"ক্যালেন্ডার সাবস্ক্রাইব করুন", cta2:"ইভেন্ট দেখুন", langLabel:"ভাষা",
+        domain:"MajorSportsEvents.com — এক পৃথিবী, সব খেলা, সবসময় আপডেট।",
+        widgetTitle:"API-Sports লাইভ এক্সপ্লোরার",
+        widgetSub:"অফিসিয়াল API-Sports উইজেট দিয়ে লিগ, ফিক্সচার, স্ট্যান্ডিং ও স্কোয়াড রিয়েল-টাইমে দেখুন। নিচের কন্ট্রোল পরিবর্তন করে কাভারেজ যাচাই করুন।",
+        widgetType:"উইজেট ধরন",
+        widgetSport:"খেলা",
+        widgetLang:"উইজেট ভাষা",
+        widgetTheme:"থিম",
+        widgetNote:"নিচের এমবেডটি তাৎক্ষণিকভাবে রিফ্রেশ হয় এবং এই প্রকল্পের জন্য সরবরাহ করা প্রোডাকশন কী ব্যবহার করে। কিছু খেলা বা উইজেটের জন্য API-Sports ড্যাশবোর্ডে উচ্চতর প্ল্যান বা অঞ্চলভিত্তিক অনুমতি লাগতে পারে।",
+        widgetTypes:{
+          leagues:"লিগ",
+          standings:"পয়েন্ট টেবিল",
+          fixtures:"ফিক্সচার",
+          teams:"দল",
+          players:"খেলোয়াড়",
+          odds:"অডস"
+        },
+        widgetSports:{
+          football:"ফুটবল",
+          "american-football":"আমেরিকান ফুটবল (NFL)",
+          basketball:"বাস্কেটবল (NBA)",
+          cricket:"ক্রিকেট",
+          rugby:"রাগবি",
+          afl:"অস্ট্রেলিয়ান ফুটবল"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"লাইট",
+          dark:"ডার্ক"
+        },
+        widgetFallback:"এই প্রিভিউ পরিবেশে উইজেট স্ক্রিপ্ট লোড হয়নি। API-Sports থেকে লাইভ ডেটা দেখতে ইন্টারনেট সংযুক্ত পরিবেশে সাইটটি খুলুন।"
         domain:"MajorSportsEvents.com — এক পৃথিবী, সব খেলা, সবসময় আপডেট।"
       },
       ru: {
@@ -172,6 +487,41 @@
         b2:"Подписывайтесь на любимые команды и страны.",
         b3:"Календари автоматически обновляются по вашему часовому поясу (Google, Apple, Outlook).",
         cta1:"Подписаться на календарь", cta2:"Смотреть события", langLabel:"Язык",
+        domain:"MajorSportsEvents.com — Один мир, все виды спорта, всегда актуально.",
+        widgetTitle:"Онлайн-обзор API-Sports",
+        widgetSub:"Просматривайте лиги, расписания, таблицы и составы через официальные виджеты API-Sports. Настройте параметры ниже, чтобы увидеть актуальное покрытие.",
+        widgetType:"Тип виджета",
+        widgetSport:"Вид спорта",
+        widgetLang:"Язык виджета",
+        widgetTheme:"Тема",
+        widgetNote:"Встроенный виджет обновляется мгновенно и использует производственный ключ, предоставленный для этого проекта. Для некоторых видов спорта или виджетов могут потребоваться расширенные тарифы либо региональный доступ в панели API-Sports.",
+        widgetTypes:{
+          leagues:"Лиги",
+          standings:"Турнирные таблицы",
+          fixtures:"Расписание",
+          teams:"Команды",
+          players:"Игроки",
+          odds:"Коэффициенты"
+        },
+        widgetSports:{
+          football:"Футбол",
+          "american-football":"Американский футбол (NFL)",
+          basketball:"Баскетбол (NBA)",
+          cricket:"Крикет",
+          rugby:"Регби",
+          afl:"Австралийский футбол"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Светлая",
+          dark:"Тёмная"
+        },
+        widgetFallback:"В этом демонстрационном окружении не удалось загрузить скрипт виджета. Откройте сайт с доступом в интернет, чтобы получить живые данные из API-Sports."
         domain:"MajorSportsEvents.com — Один мир, все виды спорта, всегда актуально."
       },
       ja: {
@@ -183,6 +533,41 @@
         b2:"お気に入りのチームや国をフォロー。",
         b3:"Google / Apple / Outlook で自動的に更新されるカレンダーを購読。",
         cta1:"カレンダーを購読", cta2:"イベントを探す", langLabel:"言語",
+        domain:"MajorSportsEvents.com — 一つの世界、すべてのスポーツ、常に最新。",
+        widgetTitle:"API-Sports ライブエクスプローラー",
+        widgetSub:"公式 API-Sports ウィジェットでリーグ、試合日程、順位、ロスターをリアルタイムに確認。下のコントロールを調整してカバレッジをチェックしましょう。",
+        widgetType:"ウィジェット種類",
+        widgetSport:"競技",
+        widgetLang:"ウィジェット言語",
+        widgetTheme:"テーマ",
+        widgetNote:"下の埋め込みは即座に更新され、このプロジェクト用に提供された本番キーを使用します。一部の競技やウィジェットには API-Sports ダッシュボードでの上位プランや地域権限が必要な場合があります。",
+        widgetTypes:{
+          leagues:"リーグ",
+          standings:"順位表",
+          fixtures:"日程",
+          teams:"チーム",
+          players:"選手",
+          odds:"オッズ"
+        },
+        widgetSports:{
+          football:"サッカー",
+          "american-football":"アメリカンフットボール (NFL)",
+          basketball:"バスケットボール (NBA)",
+          cricket:"クリケット",
+          rugby:"ラグビー",
+          afl:"オーストラリアンフットボール"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"ライト",
+          dark:"ダーク"
+        },
+        widgetFallback:"このプレビュー環境ではウィジェットスクリプトを読み込めませんでした。ネットワークに接続された環境でサイトを開き、API-Sports のライブデータを取得してください。"
         domain:"MajorSportsEvents.com — 一つの世界、すべてのスポーツ、常に最新。"
       },
       fr: {
@@ -194,6 +579,86 @@
         b2:"Suivez vos équipes et pays favoris.",
         b3:"Abonnez-vous à des calendriers qui se mettent à jour automatiquement selon votre fuseau horaire (Google, Apple, Outlook).",
         cta1:"S’abonner à un calendrier", cta2:"Explorer les événements", langLabel:"Langue",
+        domain:"MajorSportsEvents.com — Un monde, tous les sports, toujours à jour.",
+        widgetTitle:"Explorateur en direct API-Sports",
+        widgetSub:"Consultez ligues, calendriers, classements et effectifs via les widgets officiels API-Sports. Ajustez chaque contrôle pour visualiser la couverture en temps réel.",
+        widgetType:"Type de widget",
+        widgetSport:"Discipline",
+        widgetLang:"Langue du widget",
+        widgetTheme:"Thème",
+        widgetNote:"L’intégration ci-dessous se met à jour instantanément avec la clé de production fournie pour ce projet. Certains sports ou types de widget peuvent nécessiter un plan supérieur ou des droits régionaux dans le tableau de bord API-Sports.",
+        widgetTypes:{
+          leagues:"Ligues",
+          standings:"Classements",
+          fixtures:"Calendrier",
+          teams:"Équipes",
+          players:"Joueurs",
+          odds:"Cotes"
+        },
+        widgetSports:{
+          football:"Football",
+          "american-football":"Football américain (NFL)",
+          basketball:"Basket-ball (NBA)",
+          cricket:"Cricket",
+          rugby:"Rugby",
+          afl:"Football australien"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Clair",
+          dark:"Sombre"
+        },
+        widgetFallback:"Impossible de charger le script du widget dans cet environnement de prévisualisation. Ouvrez le site avec un accès réseau pour récupérer les données en direct d’API-Sports."
+      },
+      it: {
+        name:"Italiano", title:"Grandi Eventi Sportivi",
+        tag:"Un solo mondo, tutti gli sport, sempre aggiornati.",
+        about:"Chi siamo",
+        lead:"Il tuo gateway globale verso i più grandi eventi sportivi.",
+        b1:"Resta connesso con calendari dinamici e in tempo reale delle competizioni internazionali: calcio, basket, tennis, motori e altro.",
+        b2:"Segui le tue squadre e nazionali preferite.",
+        b3:"Abbònati a calendari che si aggiornano automaticamente nel tuo fuso orario su Google, Apple o Outlook.",
+        cta1:"Abbonati a un calendario", cta2:"Esplora gli eventi", langLabel:"Lingua",
+        domain:"MajorSportsEvents.com — Un solo mondo, tutti gli sport, sempre aggiornati.",
+        widgetTitle:"Esploratore live API-Sports",
+        widgetSub:"Visualizza campionati, calendari, classifiche e roster con i widget ufficiali API-Sports. Modifica i controlli per verificare la copertura in tempo reale.",
+        widgetType:"Tipo di widget",
+        widgetSport:"Sport",
+        widgetLang:"Lingua del widget",
+        widgetTheme:"Tema",
+        widgetNote:"L’embed qui sotto si aggiorna all’istante utilizzando la chiave di produzione fornita per questo progetto. Alcuni sport o tipi di widget possono richiedere piani superiori o accesso regionale dal pannello API-Sports.",
+        widgetTypes:{
+          leagues:"Campionati",
+          standings:"Classifiche",
+          fixtures:"Calendario",
+          teams:"Squadre",
+          players:"Giocatori",
+          odds:"Quote"
+        },
+        widgetSports:{
+          football:"Calcio",
+          "american-football":"Football americano (NFL)",
+          basketball:"Basket (NBA)",
+          cricket:"Cricket",
+          rugby:"Rugby",
+          afl:"Football australiano"
+        },
+        widgetLangs:{
+          en:"English",
+          fr:"Français",
+          es:"Español",
+          it:"Italiano"
+        },
+        widgetThemes:{
+          white:"Chiaro",
+          dark:"Scuro"
+        },
+        widgetFallback:"In questo ambiente di anteprima non è stato possibile caricare lo script del widget. Apri il sito con accesso a internet per ottenere i dati live da API-Sports."
         domain:"MajorSportsEvents.com — Un monde, tous les sports, toujours à jour."
       }
     };
@@ -209,12 +674,104 @@
                   browserLang.startsWith('hi')?'hi':
                   browserLang.startsWith('bn')?'bn':
                   browserLang.startsWith('ja')?'ja':
+                  browserLang.startsWith('ru')?'ru':
+                  browserLang.startsWith('it')?'it':'en');
+
+    const order = ['en','zh','es','hi','ar','pt','bn','ru','ja','fr','it'];
                   browserLang.startsWith('ru')?'ru':'en');
 
     const order = ['en','zh','es','hi','ar','pt','bn','ru','ja','fr'];
     for (const key of order){
       const opt=document.createElement('option');
       opt.value=key; opt.textContent=translations[key].name; langSelect.appendChild(opt);
+    }
+
+    const widgetState = {
+      type: localStorage.getItem('mse_widget_type') || 'leagues',
+      sport: localStorage.getItem('mse_widget_sport') || 'football',
+      lang: localStorage.getItem('mse_widget_lang') || 'en',
+      theme: localStorage.getItem('mse_widget_theme') || 'white'
+    };
+
+    const widgetOptions = {
+      types:['leagues','standings','fixtures','teams','players','odds'],
+      sports:['football','american-football','basketball','cricket','rugby','afl'],
+      langs:['en','fr','es','it'],
+      themes:['white','dark']
+    };
+
+    const widgetSelects = {
+      type:document.getElementById('widgetType'),
+      sport:document.getElementById('widgetSport'),
+      lang:document.getElementById('widgetLangSelect'),
+      theme:document.getElementById('widgetTheme')
+    };
+
+    const widgetLabels = {
+      title:document.getElementById('widgetHeading'),
+      sub:document.getElementById('widgetSub'),
+      type:document.getElementById('widgetTypeLabel').querySelector('.widget-label-text'),
+      sport:document.getElementById('widgetSportLabel').querySelector('.widget-label-text'),
+      lang:document.getElementById('widgetLangLabel').querySelector('.widget-label-text'),
+      theme:document.getElementById('widgetThemeLabel').querySelector('.widget-label-text'),
+      note:document.getElementById('widgetNote')
+    };
+
+    const widgetMount = document.getElementById('widgetMount');
+    let currentWidget = null;
+    let widgetFallbackMessage = translations.en.widgetFallback;
+
+    function populateSelect(select, values, labels){
+      select.innerHTML = '';
+      for (const value of values){
+        const opt=document.createElement('option');
+        opt.value=value;
+        opt.textContent=labels[value] || value;
+        select.appendChild(opt);
+      }
+    }
+
+    function renderWidget(){
+      widgetMount.classList.add('loading');
+      widgetMount.setAttribute('aria-busy','true');
+      if (currentWidget){
+        currentWidget.remove();
+        currentWidget = null;
+      }
+      const widget = document.createElement('api-sports-widget');
+      widget.dataset.type = widgetState.type;
+      widget.dataset.key = 'cee14c3513aba0e5c469e132f7d4c7d2';
+      widget.dataset.sport = widgetState.sport;
+      widget.dataset.lang = widgetState.lang;
+      widget.dataset.theme = widgetState.theme;
+      widget.dataset.showErrors = 'true';
+      widget.addEventListener('load', ()=>{
+        widgetMount.classList.remove('loading');
+        widgetMount.removeAttribute('aria-busy');
+      });
+      widgetMount.innerHTML = '';
+      widgetMount.classList.remove('empty');
+      widgetMount.appendChild(widget);
+      currentWidget = widget;
+      window.setTimeout(()=>{
+        if (widgetMount.classList.contains('loading')){
+          widgetMount.classList.remove('loading');
+          widgetMount.removeAttribute('aria-busy');
+          if (!window.customElements || !customElements.get('api-sports-widget')){
+            widgetMount.classList.add('empty');
+            widgetMount.textContent = widgetFallbackMessage;
+          }
+        }
+      }, 2000);
+    }
+
+    for (const [key, select] of Object.entries(widgetSelects)){
+      select.addEventListener('change', (event)=>{
+        const value = event.target.value;
+        widgetState[key] = value;
+        localStorage.setItem(`mse_widget_${key}`, value);
+        renderWidget();
+      });
     }
 
     function applyLang(code){
@@ -234,6 +791,27 @@
       langSelect.value = code;
       localStorage.setItem('mse_lang', code);
       document.title = `${t.title} — ${translations.en.title}`;
+      widgetLabels.title.textContent = t.widgetTitle;
+      widgetLabels.sub.textContent = t.widgetSub;
+      widgetLabels.type.textContent = t.widgetType;
+      widgetLabels.sport.textContent = t.widgetSport;
+      widgetLabels.lang.textContent = t.widgetLang;
+      widgetLabels.theme.textContent = t.widgetTheme;
+      widgetLabels.note.textContent = t.widgetNote;
+      widgetFallbackMessage = t.widgetFallback || translations.en.widgetFallback;
+      populateSelect(widgetSelects.type, widgetOptions.types, t.widgetTypes);
+      populateSelect(widgetSelects.sport, widgetOptions.sports, t.widgetSports);
+      populateSelect(widgetSelects.lang, widgetOptions.langs, t.widgetLangs);
+      populateSelect(widgetSelects.theme, widgetOptions.themes, t.widgetThemes);
+      for (const [key, select] of Object.entries(widgetSelects)){
+        const optionKey = key === 'lang' ? 'langs' : `${key}s`;
+        if (!widgetOptions[optionKey].includes(widgetState[key])){
+          widgetState[key] = widgetOptions[optionKey][0];
+          localStorage.setItem(`mse_widget_${key}`, widgetState[key]);
+        }
+        select.value = widgetState[key];
+      }
+      renderWidget();
     }
 
     applyLang(guess);
