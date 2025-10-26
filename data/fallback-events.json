@@ -1,0 +1,576 @@
+{
+  "generatedAt": "2024-07-01T00:00:00Z",
+  "description": "Static emergency schedule used whenever upstream APIs are unavailable.",
+  "events": [
+    {
+      "id": "fallback-soccer-fifa-world-qual-2025-eu",
+      "sportId": "soccer",
+      "sportName": "Association Football",
+      "sportRanking": 1,
+      "competitionId": "fifa-world-cup",
+      "competitionName": "FIFA World Cup Qualifiers",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "male",
+      "category": "senior",
+      "country": "Global",
+      "season": "2025",
+      "stage": "UEFA Matchday 5",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2025-09-04T18:45:00Z",
+      "endDate": "2025-09-04T20:45:00Z",
+      "timezone": "Europe/Paris",
+      "venue": {
+        "name": "Parc des Princes",
+        "city": "Paris",
+        "country": "France",
+        "capacity": 47929
+      },
+      "teams": {
+        "home": {
+          "id": "fra",
+          "name": "France",
+          "shortName": "FRA",
+          "country": "France"
+        },
+        "away": {
+          "id": "ger",
+          "name": "Germany",
+          "shortName": "GER",
+          "country": "Germany"
+        }
+      },
+      "links": {
+        "website": "https://www.fifa.com/fifaplus/en/tournaments/mens/worldcup",
+        "tickets": "https://www.fifa.com/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Paris%2C%20France&checkin=2025-09-04&checkout=2025-09-05&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/pari/250904/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-soccer-uefacl-final-2025",
+      "sportId": "soccer",
+      "sportName": "Association Football",
+      "sportRanking": 1,
+      "competitionId": "uefa-champions-league",
+      "competitionName": "UEFA Champions League",
+      "level": "continental",
+      "region": "europe",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "Europe",
+      "season": "2024-25",
+      "stage": "Final",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2025-05-24T19:00:00Z",
+      "endDate": "2025-05-24T21:30:00Z",
+      "timezone": "Europe/Berlin",
+      "venue": {
+        "name": "Allianz Arena",
+        "city": "Munich",
+        "country": "Germany",
+        "capacity": 75000
+      },
+      "teams": {
+        "home": {
+          "id": "tbd1",
+          "name": "Semi-final Winner 1",
+          "shortName": "Winner SF1",
+          "country": "Europe"
+        },
+        "away": {
+          "id": "tbd2",
+          "name": "Semi-final Winner 2",
+          "shortName": "Winner SF2",
+          "country": "Europe"
+        }
+      },
+      "links": {
+        "website": "https://www.uefa.com/uefachampionsleague/",
+        "tickets": "https://www.uefa.com/uefachampionsleague/ticketing/",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Munich%2C%20Germany&checkin=2025-05-23&checkout=2025-05-25&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/much/250523/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-cricket-icc-world-cup-2027-opener",
+      "sportId": "cricket",
+      "sportName": "Cricket",
+      "sportRanking": 2,
+      "competitionId": "icc-cricket-world-cup",
+      "competitionName": "ICC Cricket World Cup",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "male",
+      "category": "senior",
+      "country": "Global",
+      "season": "2027",
+      "stage": "Opening Match",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2027-10-10T12:00:00Z",
+      "endDate": "2027-10-10T20:00:00Z",
+      "timezone": "Africa/Johannesburg",
+      "venue": {
+        "name": "Newlands Cricket Ground",
+        "city": "Cape Town",
+        "country": "South Africa",
+        "capacity": 25000
+      },
+      "teams": {
+        "home": {
+          "id": "sa",
+          "name": "South Africa",
+          "shortName": "RSA",
+          "country": "South Africa"
+        },
+        "away": {
+          "id": "ind",
+          "name": "India",
+          "shortName": "IND",
+          "country": "India"
+        }
+      },
+      "links": {
+        "website": "https://www.icc-cricket.com/cricket-world-cup",
+        "tickets": "https://tickets.icc-cricket.com/",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Cape%20Town%2C%20South%20Africa&checkin=2027-10-09&checkout=2027-10-11&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/cpt/271009/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-cricket-ipl-final-2026",
+      "sportId": "cricket",
+      "sportName": "Cricket",
+      "sportRanking": 2,
+      "competitionId": "ipl",
+      "competitionName": "Indian Premier League",
+      "level": "continental",
+      "region": "asia",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "India",
+      "season": "2026",
+      "stage": "Final",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2026-05-24T14:00:00Z",
+      "endDate": "2026-05-24T18:00:00Z",
+      "timezone": "Asia/Kolkata",
+      "venue": {
+        "name": "Narendra Modi Stadium",
+        "city": "Ahmedabad",
+        "country": "India",
+        "capacity": 132000
+      },
+      "teams": {
+        "home": {
+          "id": "qualifier1",
+          "name": "Qualifier 1 Winner",
+          "shortName": "Q1",
+          "country": "India"
+        },
+        "away": {
+          "id": "qualifier2",
+          "name": "Qualifier 2 Winner",
+          "shortName": "Q2",
+          "country": "India"
+        }
+      },
+      "links": {
+        "website": "https://www.iplt20.com/",
+        "tickets": "https://www.iplt20.com/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Ahmedabad%2C%20India&checkin=2026-05-23&checkout=2026-05-25&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/amda/260523/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-field-hockey-pro-league-men-2025",
+      "sportId": "field-hockey",
+      "sportName": "Field Hockey",
+      "sportRanking": 3,
+      "competitionId": "fih-pro-league-men",
+      "competitionName": "FIH Pro League (Men)",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "male",
+      "category": "senior",
+      "country": "Global",
+      "season": "2025",
+      "stage": "Round 7",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2025-03-15T15:30:00Z",
+      "endDate": "2025-03-15T17:00:00Z",
+      "timezone": "Europe/Amsterdam",
+      "venue": {
+        "name": "Wagener Stadium",
+        "city": "Amsterdam",
+        "country": "Netherlands",
+        "capacity": 9000
+      },
+      "teams": {
+        "home": {
+          "id": "ned",
+          "name": "Netherlands",
+          "shortName": "NED",
+          "country": "Netherlands"
+        },
+        "away": {
+          "id": "aus",
+          "name": "Australia",
+          "shortName": "AUS",
+          "country": "Australia"
+        }
+      },
+      "links": {
+        "website": "https://www.fih.hockey/events/fih-pro-league",
+        "tickets": "https://fih.tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Amsterdam%2C%20Netherlands&checkin=2025-03-14&checkout=2025-03-16&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/ams/250314/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-field-hockey-ehl-final4-2025",
+      "sportId": "field-hockey",
+      "sportName": "Field Hockey",
+      "sportRanking": 3,
+      "competitionId": "ehl",
+      "competitionName": "Euro Hockey League",
+      "level": "continental",
+      "region": "europe",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "Europe",
+      "season": "2024-25",
+      "stage": "Final Four",
+      "status": "scheduled",
+      "statusText": "Match scheduled",
+      "startDate": "2025-04-12T13:00:00Z",
+      "endDate": "2025-04-12T15:30:00Z",
+      "timezone": "Europe/Brussels",
+      "venue": {
+        "name": "La Gantoise HC",
+        "city": "Ghent",
+        "country": "Belgium",
+        "capacity": 8000
+      },
+      "teams": {
+        "home": {
+          "id": "club1",
+          "name": "Semi-final Winner 1",
+          "shortName": "Winner SF1",
+          "country": "Europe"
+        },
+        "away": {
+          "id": "club2",
+          "name": "Semi-final Winner 2",
+          "shortName": "Winner SF2",
+          "country": "Europe"
+        }
+      },
+      "links": {
+        "website": "https://ehlhockey.tv/",
+        "tickets": "https://ehlhockey.tv/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Ghent%2C%20Belgium&checkin=2025-04-11&checkout=2025-04-13&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/brus/250411/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-basketball-nba-finals-2025-gm1",
+      "sportId": "basketball",
+      "sportName": "Basketball",
+      "sportRanking": 4,
+      "competitionId": "nba",
+      "competitionName": "NBA",
+      "level": "continental",
+      "region": "north-america",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "USA/Canada",
+      "season": "2024-25",
+      "stage": "Finals Game 1",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2025-06-05T01:00:00Z",
+      "endDate": "2025-06-05T03:45:00Z",
+      "timezone": "America/New_York",
+      "venue": {
+        "name": "TBD Arena",
+        "city": "TBD",
+        "country": "USA",
+        "capacity": 20000
+      },
+      "teams": {
+        "home": {
+          "id": "east",
+          "name": "Eastern Conference Champion",
+          "shortName": "East",
+          "country": "USA"
+        },
+        "away": {
+          "id": "west",
+          "name": "Western Conference Champion",
+          "shortName": "West",
+          "country": "USA"
+        }
+      },
+      "links": {
+        "website": "https://www.nba.com/playoffs",
+        "tickets": "https://www.nba.com/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/",
+        "flight": "https://www.skyscanner.net/",
+        "notes": "Placeholder until venue confirmed"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-basketball-fiba-womens-2026-final",
+      "sportId": "basketball",
+      "sportName": "Basketball",
+      "sportRanking": 4,
+      "competitionId": "fiba-womens-world-cup",
+      "competitionName": "FIBA Women\u2019s Basketball World Cup",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "female",
+      "category": "senior",
+      "country": "Global",
+      "season": "2026",
+      "stage": "Final",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2026-09-27T11:00:00Z",
+      "endDate": "2026-09-27T13:30:00Z",
+      "timezone": "Asia/Tokyo",
+      "venue": {
+        "name": "Saitama Super Arena",
+        "city": "Saitama",
+        "country": "Japan",
+        "capacity": 37000
+      },
+      "teams": {
+        "home": {
+          "id": "semi1",
+          "name": "Semi-final Winner 1",
+          "shortName": "Winner SF1",
+          "country": "Global"
+        },
+        "away": {
+          "id": "semi2",
+          "name": "Semi-final Winner 2",
+          "shortName": "Winner SF2",
+          "country": "Global"
+        }
+      },
+      "links": {
+        "website": "https://www.fiba.basketball/womensbasketballworldcup",
+        "tickets": "https://www.fiba.basketball/womensbasketballworldcup/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Saitama%2C%20Japan&checkin=2026-09-26&checkout=2026-09-28&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/tyoa/260926/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-baseball-mlb-world-series-2025-gm1",
+      "sportId": "baseball",
+      "sportName": "Baseball",
+      "sportRanking": 5,
+      "competitionId": "mlb",
+      "competitionName": "Major League Baseball",
+      "level": "continental",
+      "region": "north-america",
+      "type": "club",
+      "gender": "male",
+      "category": "senior",
+      "country": "USA/Canada",
+      "season": "2025",
+      "stage": "World Series Game 1",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2025-10-22T00:00:00Z",
+      "endDate": "2025-10-22T03:30:00Z",
+      "timezone": "America/New_York",
+      "venue": {
+        "name": "TBD Ballpark",
+        "city": "TBD",
+        "country": "USA",
+        "capacity": 45000
+      },
+      "teams": {
+        "home": {
+          "id": "al",
+          "name": "American League Champion",
+          "shortName": "AL Champion",
+          "country": "USA"
+        },
+        "away": {
+          "id": "nl",
+          "name": "National League Champion",
+          "shortName": "NL Champion",
+          "country": "USA"
+        }
+      },
+      "links": {
+        "website": "https://www.mlb.com/postseason",
+        "tickets": "https://www.mlb.com/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/",
+        "flight": "https://www.skyscanner.net/",
+        "notes": "Venue TBD"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    },
+    {
+      "id": "fallback-baseball-wbc-final-2026",
+      "sportId": "baseball",
+      "sportName": "Baseball",
+      "sportRanking": 5,
+      "competitionId": "wbc",
+      "competitionName": "World Baseball Classic",
+      "level": "world",
+      "region": "global",
+      "type": "national",
+      "gender": "male",
+      "category": "senior",
+      "country": "Global",
+      "season": "2026",
+      "stage": "Final",
+      "status": "scheduled",
+      "statusText": "Game scheduled",
+      "startDate": "2026-03-23T23:00:00Z",
+      "endDate": "2026-03-24T02:30:00Z",
+      "timezone": "America/New_York",
+      "venue": {
+        "name": "LoanDepot Park",
+        "city": "Miami",
+        "country": "USA",
+        "capacity": 36742
+      },
+      "teams": {
+        "home": {
+          "id": "semi1",
+          "name": "Semi-final Winner 1",
+          "shortName": "Winner SF1",
+          "country": "Global"
+        },
+        "away": {
+          "id": "semi2",
+          "name": "Semi-final Winner 2",
+          "shortName": "Winner SF2",
+          "country": "Global"
+        }
+      },
+      "links": {
+        "website": "https://www.mlb.com/world-baseball-classic",
+        "tickets": "https://www.mlb.com/world-baseball-classic/tickets",
+        "stats": null,
+        "preview": null,
+        "recap": null,
+        "stream": null
+      },
+      "travel": {
+        "hotel": "https://www.booking.com/searchresults.html?ss=Miami%2C%20USA&checkin=2026-03-22&checkout=2026-03-24&group_adults=2",
+        "flight": "https://www.skyscanner.net/transport/flights-to/mia/260322/",
+        "notes": "Fallback travel suggestion"
+      },
+      "betting": null,
+      "dataSource": "fallback",
+      "lastUpdated": "2024-07-01T00:00:00Z"
+    }
+  ]
+}
